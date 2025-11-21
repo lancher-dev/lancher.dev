@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import Logo from "../assets/logo.svg";
+---
+
+<header
+  class="mb-6 px-0 py-4 text-center lg:mb-3"
+  aria-labelledby="header-heading"
+>
+  <h2 class="sr-only" id="header-heading">lancher - introduction</h2>
+  <Image
+    src={Logo}
+    alt="lancher logo"
+    class="mx-auto h-48 w-72 text-[#89b29ee6]"
+  />
+  <p class="text-[1.2rem] text-[#d8d9d9e6]">
+    A minimal, local project-template manager written in Go.
+  </p>
+</header>

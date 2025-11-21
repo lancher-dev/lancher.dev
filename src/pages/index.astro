@@ -1,19 +1,39 @@
 ---
-import Header from "@/components/layout/Header.astro";
+import Hero from "@/components/Hero.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
-  <Header
-    title="$ lancher"
-    subtitle="A minimal, local project-template manager written in Go."
-    accessibleName="lancher - Home"
-  />
+  <Hero />
 
   <section aria-labelledby="intro-heading">
     <h2 class="sr-only" id="intro-heading">Introduction</h2>
     <p class="mt-6 mb-16 text-[1.1rem] leading-[1.8] text-[#ccc]">
-      Working in progress...
+      <p>
+        To install <strong>lancher</strong>, run the following command in your
+        terminal:
+      </p>
+      <div
+        class="relative mx-0 my-6 flex items-center gap-4 rounded-sm border border-[#444] bg-[#1a1a1a] p-4"
+        role="group"
+        aria-label={`Installation command for lancher`}
+      >
+        <code
+          class="scrollbar-hide flex flex-1 items-center overflow-x-auto bg-none text-[0.9rem] whitespace-nowrap text-[#89b29ee6] lg:overflow-visible"
+          aria-label="Installation command"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          curl -fsSL https://lancher.dev/install.sh | sh
+        </code>
+        <button
+          class="ml-8 flex shrink-0 cursor-pointer items-center justify-center rounded border border-[#555] bg-[#333] px-4 py-2 text-[0.75rem] text-[#bbb] transition-colors hover:bg-[#444] hover:text-white"
+          onclick={`navigator.clipboard.writeText('curl -fsSL https://lancher.dev/install.sh | sh')`}
+          title="Copy to clipboard"
+          aria-label="Copy installation command to clipboard"
+        >
+          <i class="nf nf-md-content_copy"></i>
+        </button>
+      </div>
     </p>
   </section>
 </Layout>
