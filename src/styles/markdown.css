@@ -131,8 +131,16 @@
   display: block;
   overflow-x: auto;
   padding-right: 3rem;
-  mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 3rem), transparent 100%);
+  mask-image: linear-gradient(
+    to right,
+    #000 calc(100% - 3rem),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 calc(100% - 3rem),
+    transparent 100%
+  );
 }
 
 .markdown-content pre > .code-copy-button {
