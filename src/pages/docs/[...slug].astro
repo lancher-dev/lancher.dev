@@ -4,6 +4,7 @@ import { parseDocCollectionId, sortDocPages } from "@/utils/docs";
 
 import DocsLayout from "@/layouts/DocsLayout.astro";
 import DocsMobileNav from "@/components/docs/DocsMobileNav.astro";
+import DocsPageNav from "@/components/docs/DocsPageNav.astro";
 
 export async function getStaticPaths() {
   const docsCollection = await getCollection("docsPages");
@@ -78,5 +79,7 @@ const currentSlug = Astro.params.slug || "";
         <Content />
       </div>
     </article>
+
+    <DocsPageNav id={id} />
   </main>
 </DocsLayout>
