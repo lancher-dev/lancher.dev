@@ -7,7 +7,7 @@ const { selector = ".markdown-content" } = Astro.props;
 ---
 
 <script is:inline define:vars={{ selector }}>
-  document.addEventListener("DOMContentLoaded", function () {
+  function initMarkdownEnhancements() {
     /**
      * Function to add heading links (h2)
      * @returns {void}
@@ -96,5 +96,11 @@ const { selector = ".markdown-content" } = Astro.props;
     // Run all enhancements
     addHeadingLinks();
     addCopyButtonsToCodeBlocks();
-  });
+  }
+
+  // Initialize on page load
+  initMarkdownEnhancements();
+
+  // Re-initialize on view transitions
+  document.addEventListener("astro:page-load", initMarkdownEnhancements);
 </script>
