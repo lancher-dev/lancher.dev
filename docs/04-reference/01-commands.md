@@ -17,6 +17,7 @@ lancher create --template <name> --destination <path>
 
 - `-t, --template` - Template name
 - `-d, --destination` - Destination directory
+- `-p, --print` - Show command output
 
 **Interactive:**
 
@@ -47,6 +48,10 @@ lancher template add <name> <source>
 
 - `<name>` - Template name
 - `<source>` - Local path, Zip file or git URL
+
+**Flags:**
+
+- `-p, --print` - Show command output
 
 **Interactive:**
 
@@ -98,6 +103,7 @@ lancher template update <name> -d <path>
 **Flags:**
 
 - `-d, --directory` - New source path (overwrites template)
+- `-p, --print` - Show command output
 
 **Examples:**
 
@@ -156,7 +162,6 @@ lancher info
 Display version.
 
 ```bash
-lancher version
 lancher -v
 lancher --version
 ```
@@ -172,3 +177,5 @@ lancher help
 lancher --help
 lancher -h
 ```
+
+All commands and subcommands have help options.

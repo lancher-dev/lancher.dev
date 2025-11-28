@@ -28,7 +28,8 @@ Prompts for:
 
 1. Template selection (from available templates)
 2. Destination directory
-3. Hook execution confirmation (if configured)
+3. Asks if you want to initialize the local git repository
+4. Hook execution confirmation (if configured)
 
 Interactive mode is useful when you want to browse available templates or don't remember exact template names. The prompt provides a searchable list of all stored templates.
 

@@ -70,6 +70,9 @@ Performs `git pull` to fetch latest changes.
 
 This operation only works for templates added via git. It pulls from the remote repository and merges changes into the local copy.
 
+> [!Note]
+> Although a git configuration may be present in the template, all references to it are not imported when creating a new project. To keep new projects always "fresh", everything in the `.git/` folder is ignored.
+
 ### Overwrite with New Files
 
 ```bash

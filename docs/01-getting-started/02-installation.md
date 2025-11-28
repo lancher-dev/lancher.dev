@@ -48,6 +48,6 @@ The uninstaller prompts to optionally remove stored templates.
 ## Verify Installation
 
 ```bash
-lancher version
+lancher --version
 lancher info
 ```
