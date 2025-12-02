@@ -1,4 +1,4 @@
-# lancher.dev [![Netlify Status](https://api.netlify.com/api/v1/badges/de03c816-ccb6-4523-985d-bdcb656f36a8/deploy-status)](https://app.netlify.com/projects/lancher/deploys)
+# lancher.dev
 
 This is the [`lancher`](https://github.com/Kasui92/lancher) website.
 
