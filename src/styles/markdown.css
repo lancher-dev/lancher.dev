@@ -25,6 +25,7 @@
   margin-top: 2rem;
   margin-bottom: 1rem;
   position: relative;
+  text-wrap: balance;
 }
 
 .markdown-content h2 {
@@ -52,6 +53,13 @@
 
 .heading-links:hover {
   opacity: 1 !important;
+}
+
+@media (max-width: 600px) {
+  .heading-links {
+    opacity: 1;
+    font-size: calc(var(--ok-font-size) * 0.85);
+  }
 }
 
 .markdown-content h1:first-child,
