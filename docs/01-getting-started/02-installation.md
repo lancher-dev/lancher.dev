@@ -1,6 +1,6 @@
 # Installation
 
-Install lancher via shell script or build manually from source. Binary installs to `~/.local/bin`.
+Install lancher via shell script or build manually from source.
 
 ## Quick Installation
 
@@ -37,17 +37,8 @@ go build -o lancher ./cmd/lancher
 sudo mv lancher /usr/local/bin/
 ```
 
-## Uninstall
+## Third party repositories
 
-```bash
-curl -sS https://lancher.dev/uninstall.sh | sh
-```
+lancher is also distributed in other repositories, for easier installation.
 
-The uninstaller prompts to optionally remove stored templates.
-
-## Verify Installation
-
-```bash
-lancher --version
-lancher info
-```
+[![Packaging status](https://repology.org/badge/vertical-allrepos/lancher.svg)](https://repology.org/project/lancher/versions)
