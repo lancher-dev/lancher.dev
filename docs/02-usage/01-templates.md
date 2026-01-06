@@ -67,7 +67,7 @@ lancher template list
 lancher template ls
 ```
 
-Output shows template name, path, and git URL (if applicable).
+Output shows all the template information, like name, path, git URL (if applicable) and all informations, from meta and storage both.
 
 The list command provides a quick overview of all available templates. Git templates display their remote URL, while local templates show only their storage path.
 

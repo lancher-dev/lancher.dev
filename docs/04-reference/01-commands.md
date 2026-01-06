@@ -80,11 +80,12 @@ lancher template add ruby-on-rails gh:user/ruby-on-rails-template
 
 ## `template list`
 
-List all templates.
+List all templates and their information.
 
 ```bash
 lancher template list
 lancher template ls
+lancher templates
 ```
 
 **Output:**
@@ -92,6 +93,7 @@ lancher template ls
 - Template name
 - Storage path
 - Git URL (if applicable)
+- Metadata information (author, version, etc.)
 
 ## `template update`
 
@@ -138,19 +140,6 @@ lancher template remove
 lancher template remove old-template
 lancher template rm unused
 ```
-
-## `info`
-
-Display storage information.
-
-```bash
-lancher info
-```
-
-**Output:**
-
-- Storage directory
-- Template list (with meta info)
 
 ## `version`
 

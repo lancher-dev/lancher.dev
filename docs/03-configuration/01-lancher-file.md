@@ -19,7 +19,7 @@ ignore:
   - pattern2
 ```
 
-The file can be either `.lancher.yaml` or `.lancher.yml`, `lancher.yaml`, or `lancher.yml`. If there are multiple configuration files, an error will be displayed, prompting you to keep only the trusted file. You can view the status of your templates at any time using the `lancher info` command.
+The file can be either `.lancher.yaml` or `.lancher.yml`, `lancher.yaml`, or `lancher.yml`. If there are multiple configuration files, an error will be displayed, prompting you to keep only the trusted file. You can view the status of your templates at any time using the `lancher template ls` command.
 
 ## Fields
 

@@ -148,7 +148,7 @@ Or remove and re-add template.
 ### Templates Not Listed
 
 ```bash
-lancher info  # Verify storage location
+lancher template ls  # Verify storage location
 ls -la ~/.local/share/lancher/templates
 ```
 

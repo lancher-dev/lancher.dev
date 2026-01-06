@@ -52,28 +52,6 @@ template-name/
 └── [source files]
 ```
 
-## Viewing Storage
-
-```bash
-lancher info
-```
-
-Output:
-
-```
-Storage Directory:  /home/user/.local/share/lancher/templates
-Templates:          2
-
-Templates:
-
-  nextjs-starter
-    Path: /home/user/.local/share/lancher/templates/nextjs-starter
-
-  react-app
-    Path: /home/user/.local/share/lancher/templates/react-app
-    Git: https://github.com/user/react-template
-```
-
 ## Manual Management
 
 Templates can be manually edited in storage directory, but recommended to use `lancher template update` for consistency.
