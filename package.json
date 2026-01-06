@@ -9,16 +9,16 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.17",
-    "astro": "^5.16.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.6",
     "github-slugger": "^2.0.0",
-    "remark-github-blockquote-alert": "^2.0.0",
+    "remark-github-blockquote-alert": "^2.0.1",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "prettier": "3.6.2",
+    "prettier": "3.7.4",
     "prettier-plugin-astro": "0.14.1",
-    "prettier-plugin-tailwindcss": "0.7.1"
+    "prettier-plugin-tailwindcss": "0.7.2"
   }
 }
