@@ -5,7 +5,7 @@ set -e
 # Usage: curl -sS https://lancher.dev/uninstall.sh | sh
 # This script downloads and executes the main uninstaller from the lancher repository
 
-REPO_URL="https://raw.githubusercontent.com/Kasui92/lancher/main/bin/uninstall.sh"
+REPO_URL="https://raw.githubusercontent.com/lancher-dev/lancher/main/bin/uninstall.sh"
 
 # Colors
 RED='\033[0;31m'

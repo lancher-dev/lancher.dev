@@ -20,7 +20,7 @@ For manual installation you need:
 At this point, proceed with the repo clone and the command installation.
 
 ```bash
-git clone https://github.com/Kasui92/lancher.git
+git clone https://github.com/lancher-dev/lancher.git
 cd lancher
 make install
 ```
@@ -29,7 +29,7 @@ make install
 
 ```bash
 # Clone and build
-git clone https://github.com/Kasui92/lancher.git
+git clone https://github.com/lancher-dev/lancher.git
 cd lancher
 go build -o lancher ./cmd/lancher
 

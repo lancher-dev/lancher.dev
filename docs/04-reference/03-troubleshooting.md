@@ -166,9 +166,9 @@ ls -la ~/.local/share/lancher/templates
 
 ## Getting Help
 
-If you can't find a solution to your problem, the best way to get help is through the lancher GitHub repository. Start by searching existing [issues](https://github.com/Kasui92/lancher/issues) and [discussions](https://github.com/Kasui92/lancher/discussions) to see if someone has encountered the same problem. Many common questions have already been answered in these threads.
+If you can't find a solution to your problem, the best way to get help is through the lancher GitHub repository. Start by searching existing [issues](https://github.com/lancher-dev/lancher/issues) and [discussions](https://github.com/lancher-dev/lancher/discussions) to see if someone has encountered the same problem. Many common questions have already been answered in these threads.
 
-If you don't find what you're looking for, feel free to [open a new issue](https://github.com/Kasui92/lancher/issues/new). When creating an issue, include:
+If you don't find what you're looking for, feel free to [open a new issue](https://github.com/lancher-dev/lancher/issues/new). When creating an issue, include:
 
 - Lancher version (`lancher version`)
 - Operating system and version

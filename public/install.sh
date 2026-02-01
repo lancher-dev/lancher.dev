@@ -5,7 +5,7 @@ set -e
 # Usage: curl -sS https://lancher.dev/install.sh | sh
 # This script downloads and executes the main installer from the lancher repository
 
-REPO_URL="https://raw.githubusercontent.com/Kasui92/lancher/main/bin/install.sh"
+REPO_URL="https://raw.githubusercontent.com/lancher-dev/lancher/main/bin/install.sh"
 
 # Colors
 RED='\033[0;31m'
