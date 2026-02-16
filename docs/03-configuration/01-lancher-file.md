@@ -1,6 +1,6 @@
 # .lancher.yaml
 
-The `.lancher.yaml` file is an optional YAML configuration that defines template behavior. It specifies metadata displayed during project creation (name, description, author, version), shell commands executed after file copy (hooks), and patterns for excluding files from the copy operation (ignore). All fields are optional.
+The `.lancher.yaml` file is an optional YAML configuration that defines template behavior. It specifies metadata displayed during project creation (name, description, author, version) and shell commands executed after file copy (hooks). All fields are optional.
 
 ## File Format
 
@@ -14,9 +14,6 @@ version: 1.0.0
 hooks:
   - command1
   - command2
-ignore:
-  - pattern1
-  - pattern2
 ```
 
 The file can be either `.lancher.yaml` or `.lancher.yml`, `lancher.yaml`, or `lancher.yml`. If there are multiple configuration files, an error will be displayed, prompting you to keep only the trusted file. You can view the status of your templates at any time using the `lancher template ls` command.
@@ -93,6 +90,9 @@ hooks:
 
 ### ignore
 
+> [!WARNING]
+> **Deprecated**: Use `.lancherignore` file instead. This field will be removed in a future version. See [Ignore Patterns](./03-ignore-patterns.md) for details.
+
 **Type:** `array of strings`
 **Optional**
 
@@ -120,12 +120,6 @@ hooks:
   - npm install
   - npm run build
   - git init
-
-ignore:
-  - node_modules
-  - dist
-  - "*.log"
-  - .env.local
 ```
 
 ### Python Project
@@ -138,12 +132,6 @@ version: 1.0.0
 hooks:
   - python -m venv venv
   - source venv/bin/activate && pip install -r requirements.txt
-
-ignore:
-  - venv
-  - __pycache__
-  - "*.pyc"
-  - .env
 ```
 
 ### Monorepo
@@ -157,18 +145,6 @@ hooks:
   - npm install
   - npm run bootstrap
   - npx husky install
-
-ignore:
-  - node_modules
-  - "**/dist"
-  - "**/build"
-  - .git
 ```
 
-## Pattern Syntax
-
-- **Exact names**: `node_modules`, `.git`
-- **Wildcards**: `*.log`, `*.tmp`
-- **Directories**: `dist/`, `build/`
-- **Glob patterns**: `**/*.test.js`
-- **Quote special chars**: `"*.log"`
+> **Note**: For ignore patterns, use a `.lancherignore` file in your template root. See [Ignore Patterns](./03-ignore-patterns.md) for details.
