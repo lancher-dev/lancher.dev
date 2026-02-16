@@ -1,16 +1,14 @@
 # Managing Templates
 
-Lancher allows you to manage project templates from multiple sources. You can add templates from your local filesystem or a Zip file, clone them from git repositories using HTTPS or SSH protocols, and organize them in platform-specific storage directories. Once added, templates can be listed, updated with latest changes, or removed when no longer needed.
+Lancher manages project templates from multiple sources: local filesystem, Zip files, or git repositories (HTTPS/SSH). Templates are stored in platform-specific directories and can be listed, updated, or removed as needed.
 
 ## Add Templates
 
-Templates can be sourced from local directories or remote git repositories. Local templates are copied to lancher's storage, while git templates are cloned and can be kept up-to-date.
-
-You can use the **interactive mode** at any time, which helps you create the template.
+Templates can be sourced from local directories, remote git repositories, or GitHub/GitLab. Local templates are copied to lancher's storage, while git templates are cloned and can be kept up-to-date. Use the interactive mode to get guided through the process.
 
 ### From Local Directory
 
-This command copies the entire directory structure from the specified path into lancher's template storage, preserving file permissions and directory hierarchy.
+Copies the directory structure from the specified path into lancher's template storage.
 
 ```bash
 lancher template add <name> <path>
@@ -24,7 +22,7 @@ lancher template add nextjs ~/projects/nextjs-base
 
 ### From Git Repository
 
-Git-based templates maintain their repository history, allowing you to pull updates later. Authentication is handled by your git configuration (credentials for HTTPS, SSH keys for SSH).
+Git-based templates maintain their repository history for pulling updates later. Authentication uses your git configuration.
 
 ```bash
 lancher template add <name> <git-url>
@@ -42,7 +40,7 @@ lancher template add vue git@github.com:user/vue-template.git
 
 ### From GitHub/GitLab CLI
 
-You can use the two aliases `gh:` (GitHub) and `gl:` (GitLab) to add the template via their respective CLIs, namely [github-cli](https://cli.github.com/) and [gitlab-cli](https://gitlab.com/gitlab-org/cli). If used, the presence of CLI commands is checked first; otherwise, they are simply replaced with HTTPS URLs, and it behaves like an HTTPS repository.
+Use the `gh:` (GitHub) and `gl:` (GitLab) aliases to add templates via [github-cli](https://cli.github.com/) or [gitlab-cli](https://gitlab.com/gitlab-org/cli). Lancher checks for CLI presence first, otherwise falls back to HTTPS URLs.
 
 ```bash
 lancher template add <name> gh:<user/organization>/<repo>
@@ -67,9 +65,7 @@ lancher template list
 lancher template ls
 ```
 
-Output shows all the template information, like name, path, git URL (if applicable) and all informations, from meta and storage both.
-
-The list command provides a quick overview of all available templates. Git templates display their remote URL, while local templates show only their storage path.
+The list command provides a quick overview of all available templates, showing name, storage path, git URL for remote templates, and metadata from the template configuration.
 
 ## Update Templates
 
@@ -81,9 +77,7 @@ Keep your templates synchronized with their sources. Git templates can fetch lat
 lancher template update <name>
 ```
 
-Performs `git pull` to fetch latest changes.
-
-This operation only works for templates added via git. It pulls from the remote repository and merges changes into the local copy.
+Performs `git pull` to fetch latest changes from the remote repository. Only works for templates added via git.
 
 > [!Note]
 > Although a git configuration may be present in the template, all references to it are not imported when creating a new project. To keep new projects always "fresh", everything in the `.git/` folder is ignored.
@@ -94,11 +88,11 @@ This operation only works for templates added via git. It pulls from the remote 
 lancher template update <name> -d <new-path>
 ```
 
-Replaces entire template with content from `<new-path>`.
+Replaces the entire template with content from the new path.
 
 ## Remove Templates
 
-Delete templates from storage when they're no longer needed. This action permanently removes the template directory.
+Delete templates from storage when no longer needed. This permanently removes the template directory.
 
 ```bash
 lancher template remove <name>

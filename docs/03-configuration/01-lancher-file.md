@@ -1,6 +1,6 @@
 # .lancher.yaml
 
-The `.lancher.yaml` file is an optional YAML configuration that defines template behavior. It specifies metadata displayed during project creation (name, description, author, version), shell commands executed after file copy (hooks), and patterns for excluding files from the copy operation (ignore). All fields are optional.
+The `.lancher.yaml` file is an optional YAML configuration that defines template behavior with metadata (name, description, author, version) and post-creation shell commands (hooks).
 
 ## File Format
 
@@ -14,16 +14,13 @@ version: 1.0.0
 hooks:
   - command1
   - command2
-ignore:
-  - pattern1
-  - pattern2
 ```
 
-The file can be either `.lancher.yaml` or `.lancher.yml`, `lancher.yaml`, or `lancher.yml`. If there are multiple configuration files, an error will be displayed, prompting you to keep only the trusted file. You can view the status of your templates at any time using the `lancher template ls` command.
+The file can be named `.lancher.yaml`, `.lancher.yml`, `lancher.yaml`, or `lancher.yml`. If multiple configuration files exist, an error prompts you to keep only one. View template status with `lancher template ls`.
 
 ## Fields
 
-Each field serves a specific purpose in template configuration. Missing fields are simply ignored, allowing minimal configurations.
+Each field serves a specific purpose in template configuration. Missing fields are ignored, allowing minimal configurations.
 
 ### name
 
@@ -74,7 +71,7 @@ version: 2.1.0
 **Type:** `array of strings`
 **Optional**
 
-Shell commands executed in project directory after file copy. Requires user confirmation.
+Shell commands executed in the project directory after file copy, requiring user confirmation.
 
 ```yaml
 hooks:
@@ -83,15 +80,12 @@ hooks:
   - chmod +x scripts/setup.sh
 ```
 
-**Execution:**
-
-- Commands run in order
-- Executed from project directory
-- User must confirm before execution
-- Output displayed for each command
-- Stops on first failure
+Commands run sequentially in the project directory. Users must confirm before execution, and the process stops on first failure.
 
 ### ignore
+
+> [!WARNING]
+> **Deprecated**: Use `.lancherignore` file instead. This field will be removed in a future version. See [Ignore Patterns](./03-ignore-patterns.md) for details.
 
 **Type:** `array of strings`
 **Optional**
@@ -120,12 +114,6 @@ hooks:
   - npm install
   - npm run build
   - git init
-
-ignore:
-  - node_modules
-  - dist
-  - "*.log"
-  - .env.local
 ```
 
 ### Python Project
@@ -138,12 +126,6 @@ version: 1.0.0
 hooks:
   - python -m venv venv
   - source venv/bin/activate && pip install -r requirements.txt
-
-ignore:
-  - venv
-  - __pycache__
-  - "*.pyc"
-  - .env
 ```
 
 ### Monorepo
@@ -157,18 +139,6 @@ hooks:
   - npm install
   - npm run bootstrap
   - npx husky install
-
-ignore:
-  - node_modules
-  - "**/dist"
-  - "**/build"
-  - .git
 ```
 
-## Pattern Syntax
-
-- **Exact names**: `node_modules`, `.git`
-- **Wildcards**: `*.log`, `*.tmp`
-- **Directories**: `dist/`, `build/`
-- **Glob patterns**: `**/*.test.js`
-- **Quote special chars**: `"*.log"`
+> **Note**: For ignore patterns, use a `.lancherignore` file in your template root. See [Ignore Patterns](./03-ignore-patterns.md) for details.

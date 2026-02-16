@@ -1,6 +1,6 @@
 # Storage
 
-Lancher stores templates in platform-specific directories following OS conventions. Linux uses XDG Base Directory specification, falling back to `~/.local/share` if `$XDG_DATA_HOME` is unset. macOS uses the standard Application Support directory. Templates are stored as regular directories, with git templates maintaining their repository metadata.
+Lancher stores templates in platform-specific directories following OS conventions. Linux uses XDG Base Directory specification (falling back to `~/.local/share`), while macOS uses the standard Application Support directory.
 
 ## Locations
 
@@ -24,7 +24,7 @@ Fallback:
 ~/Library/Application Support/lancher/templates
 ```
 
-These paths ensure templates are stored in user-writable locations without requiring elevated privileges.
+These paths ensure templates are stored in user-writable locations.
 
 ## Structure
 
@@ -54,7 +54,7 @@ template-name/
 
 ## Manual Management
 
-Templates can be manually edited in storage directory, but recommended to use `lancher template update` for consistency.
+While templates can be manually edited in the storage directory, it's recommended to use `lancher template update` for consistency.
 
 ## Cleanup
 

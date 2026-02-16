@@ -1,10 +1,10 @@
 # Commands
 
-Lancher provides a minimal CLI with two main commands: `create` for generating projects from templates, and `template` with subcommands for managing your template library. Most commands support both explicit flags and interactive prompts, allowing flexibility between scripting and manual use.
+Lancher provides two main commands: `create` for generating projects from templates, and `template` for managing your template library. Commands support both flags and interactive prompts.
 
 ## `create`
 
-Create a new project from a template. Accepts template name and destination path as flags or prompts interactively.
+Create a new project from a template using flags or interactive prompts.
 
 ```bash
 lancher create -t <template> -d <path_to_destination>
@@ -34,11 +34,11 @@ lancher create -t nextjs -d ./my-app
 lancher create --template react --destination ~/projects/new-app
 ```
 
-The command validates the template exists before copying. If the destination directory exists, the operation aborts to prevent overwrites.
+The command validates template existence before copying. If the destination exists, the operation aborts to prevent overwrites.
 
 ## `template add`
 
-Add template from local path or git repository. Local templates are copied, git templates are cloned.
+Add template from local path, Zip file, git repository, or GitHub/GitLab alias. Local templates are copied, git templates are cloned.
 
 ```bash
 lancher template add <name> <source>

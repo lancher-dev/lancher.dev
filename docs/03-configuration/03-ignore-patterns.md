@@ -1,158 +1,170 @@
 # Ignore Patterns
 
-Ignore patterns define which files and directories should be excluded during template copy operations. Patterns use glob syntax and support exact filename matches, wildcards for flexible matching, and directory paths. All patterns are case-sensitive and evaluated against each file's relative path within the template.
+Define which files and directories to exclude during template copy operations. Patterns use glob syntax and are case-sensitive, evaluated against each file's relative path within the template.
+
+You should always exclude version control directories like `.git`, dependency folders like `node_modules`, and build output directories. Never include secrets, API keys, or credentials in templates. Platform-specific files (`.DS_Store`, `Thumbs.db`) and IDE configurations (`.vscode`, `.idea`) should typically be excluded as well.
 
 ## Configuration
 
-Define patterns as an array of strings. Quote patterns containing special characters.
+Create a `.lancherignore` file in your template root directory. Each line represents a pattern:
 
-```yaml
-ignore:
-  - node_modules
-  - .git
-  - "*.log"
+```
+node_modules
+.git
+*.log
+dist/
+build/
 ```
 
-Patterns prevent unnecessary files from being copied to new projects. This keeps templates clean and avoids copying build artifacts, dependencies, or version control history.
+Lines starting with `#` are treated as comments and help document why specific patterns are excluded:
+
+```
+# Dependencies
+node_modules
+pnpm-lock.yaml
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+```
+
+Patterns match from the template root and are case-sensitive. An empty `.lancherignore` file will include all files in the template.
 
 ## Pattern Types
 
 ### Exact Match
 
-```yaml
-ignore:
-  - node_modules
-  - package-lock.json
-  - .DS_Store
+```
+node_modules
+package-lock.json
+.DS_Store
 ```
 
 ### Wildcards
 
-```yaml
-ignore:
-  - "*.log"
-  - "*.tmp"
-  - "test-*"
+Use `*` to match any characters:
+
+```
+*.log
+*.tmp
+test-*
 ```
 
 ### Directories
 
-```yaml
-ignore:
-  - dist/
-  - build/
-  - .cache/
+Trailing slash indicates a directory:
+
+```
+dist/
+build/
+.cache/
 ```
 
 ### Glob Patterns
 
-```yaml
-ignore:
-  - "**/*.test.js"
-  - "**/node_modules"
+Use `**` for recursive matching:
+
+```
+**/*.test.js
+**/node_modules
 ```
 
 ## Common Patterns
 
 ### Node.js
 
-```yaml
-ignore:
-  - node_modules
-  - package-lock.json
-  - pnpm-lock.yaml
-  - yarn.lock
-  - .next
-  - .nuxt
-  - dist
-  - build
-  - "*.log"
+```
+node_modules
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+.next
+.nuxt
+dist
+build
+*.log
 ```
 
 ### Python
 
-```yaml
-ignore:
-  - __pycache__
-  - "*.pyc"
-  - "*.pyo"
-  - venv
-  - .venv
-  - .pytest_cache
-  - dist
-  - "*.egg-info"
+```
+__pycache__
+*.pyc
+*.pyo
+venv
+.venv
+.pytest_cache
+dist
+*.egg-info
 ```
 
 ### Go
 
-```yaml
-ignore:
-  - vendor
-  - "*.exe"
-  - "*.test"
-  - .bin
-  - coverage.out
+```
+vendor
+*.exe
+*.test
+.bin
+coverage.out
 ```
 
 ### Git & VCS
 
-```yaml
-ignore:
-  - .git
-  - .svn
-  - .hg
+```
+.git
+.svn
+.hg
 ```
 
 ### IDE & Editors
 
-```yaml
-ignore:
-  - .vscode
-  - .idea
-  - "*.swp"
-  - "*.swo"
-  - .DS_Store
-  - Thumbs.db
+```
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
 ```
 
 ### Secrets & Environment
 
-```yaml
-ignore:
-  - .env
-  - .env.local
-  - .env.*.local
-  - "*.key"
-  - "*.pem"
-  - secrets.yaml
+```
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+secrets.yaml
 ```
 
 ### Build Artifacts
 
-```yaml
-ignore:
-  - dist
-  - build
-  - out
-  - .next
-  - .nuxt
-  - target
-  - "*.o"
-  - "*.so"
+```
+dist
+build
+out
+.next
+.nuxt
+target
+*.o
+*.so
 ```
 
-## Best Practices
+## Deprecated Method
 
-- **Always exclude** `.git`, `node_modules`, build directories
-- **Never include** secrets, keys, or credentials
-- **Remove** platform-specific files (`.DS_Store`, `Thumbs.db`)
-- **Clean** IDE configurations (`.vscode`, `.idea`)
-- **Strip** lock files if templates should support multiple package managers
-- **Quote** patterns with special characters
+> [!WARNING]
+> The `ignore` field in `.lancher.yaml` is deprecated and will be removed in a future version. Migrate to `.lancherignore`.
 
-## Notes
+If using the old method, define patterns as an array in `.lancher.yaml`:
 
-- Patterns use glob syntax
-- Matching is case-sensitive
-- Patterns match from template root
-- Empty ignore array includes all files
+```yaml
+ignore:
+  - node_modules
+  - "*.log"
+```
+
+If both files exist, `.lancherignore` takes precedence.

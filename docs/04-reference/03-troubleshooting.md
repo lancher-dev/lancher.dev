@@ -1,6 +1,6 @@
 # Troubleshooting
 
-Common errors and their solutions. Most issues stem from missing templates, git authentication problems, file permissions, or failed hook commands. This guide provides diagnostic steps and fixes for each scenario.
+Common errors and solutions. Issues typically stem from missing templates, git authentication, file permissions, or failed hooks.
 
 ## Template Not Found
 
@@ -24,7 +24,7 @@ Verify template name and add if missing.
 
 ## Git Clone Failed
 
-Git repository cloning can fail due to authentication, network issues, or invalid URLs.
+Git cloning can fail due to authentication, network, or invalid URLs.
 
 **Error:**
 
@@ -43,7 +43,7 @@ Error: failed to clone repository
 
 ## Hook Execution Failed
 
-Hooks fail when commands return non-zero exit codes. This usually indicates missing dependencies or configuration issues.
+Hooks fail when commands return non-zero exit codes, usually indicating missing dependencies or configuration issues.
 
 **Error:**
 
@@ -86,7 +86,7 @@ Error: destination directory already exists
 ```
 
 **Solution:**
-Remove or rename existing directory, or choose different destination.
+Remove or rename the existing directory, or choose a different destination.
 
 ---
 
