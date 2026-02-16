@@ -16,7 +16,7 @@ Example:
 lancher create -t nextjs -d ./my-app
 ```
 
-This command copies the `nextjs` template to the `./my-app` directory. If the destination exists, lancher will abort to prevent accidental overwrites.
+This command copies the `nextjs` template to `./my-app`. If the destination exists, lancher aborts to prevent overwrites.
 
 ## Interactive Mode
 
@@ -24,23 +24,13 @@ This command copies the `nextjs` template to the `./my-app` directory. If the de
 lancher create
 ```
 
-Prompts for:
-
-1. Template selection (from available templates)
-2. Destination directory
-3. Asks if you want to initialize the local git repository
-4. Hook execution confirmation (if configured)
-
-Interactive mode is useful when you want to browse available templates or don't remember exact template names. The prompt provides a searchable list of all stored templates.
+Interactive mode prompts for template selection, destination directory, git initialization, and hook execution confirmation. It's useful when browsing available templates or when you don't remember exact template names, offering a searchable list of all stored templates.
 
 ## Process Flow
 
-1. **Validation**: Checks template exists and destination is available
-2. **Display Metadata**: Shows template name, description, version (from `.lancher.yaml`)
-3. **Copy Files**: Copies template to destination (respecting ignore patterns)
-4. **Execute Hooks**: Runs post-creation commands (if confirmed)
+When you create a project, Lancher first validates that the template exists and the destination is available. It then displays template metadata like name, description, and version from `.lancher.yaml` if present. After that, it copies all template files to the destination directory while respecting any ignore patterns you've configured. Finally, if the template includes hooks and you confirm their execution, Lancher runs those post-creation commands.
 
-Each step must complete successfully before proceeding. If a hook fails (non-zero exit code), the process stops but already-copied files remain.
+Each step must complete successfully before proceeding. If a hook fails with a non-zero exit code, the process stops, though already-copied files remain in place.
 
 ## Examples
 

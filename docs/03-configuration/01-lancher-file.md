@@ -1,6 +1,6 @@
 # .lancher.yaml
 
-The `.lancher.yaml` file is an optional YAML configuration that defines template behavior. It specifies metadata displayed during project creation (name, description, author, version) and shell commands executed after file copy (hooks). All fields are optional.
+The `.lancher.yaml` file is an optional YAML configuration that defines template behavior with metadata (name, description, author, version) and post-creation shell commands (hooks).
 
 ## File Format
 
@@ -16,11 +16,11 @@ hooks:
   - command2
 ```
 
-The file can be either `.lancher.yaml` or `.lancher.yml`, `lancher.yaml`, or `lancher.yml`. If there are multiple configuration files, an error will be displayed, prompting you to keep only the trusted file. You can view the status of your templates at any time using the `lancher template ls` command.
+The file can be named `.lancher.yaml`, `.lancher.yml`, `lancher.yaml`, or `lancher.yml`. If multiple configuration files exist, an error prompts you to keep only one. View template status with `lancher template ls`.
 
 ## Fields
 
-Each field serves a specific purpose in template configuration. Missing fields are simply ignored, allowing minimal configurations.
+Each field serves a specific purpose in template configuration. Missing fields are ignored, allowing minimal configurations.
 
 ### name
 
@@ -71,7 +71,7 @@ version: 2.1.0
 **Type:** `array of strings`
 **Optional**
 
-Shell commands executed in project directory after file copy. Requires user confirmation.
+Shell commands executed in the project directory after file copy, requiring user confirmation.
 
 ```yaml
 hooks:
@@ -80,13 +80,7 @@ hooks:
   - chmod +x scripts/setup.sh
 ```
 
-**Execution:**
-
-- Commands run in order
-- Executed from project directory
-- User must confirm before execution
-- Output displayed for each command
-- Stops on first failure
+Commands run sequentially in the project directory. Users must confirm before execution, and the process stops on first failure.
 
 ### ignore
 

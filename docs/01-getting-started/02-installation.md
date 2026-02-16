@@ -1,6 +1,6 @@
 # Installation
 
-Install lancher via shell script or build manually from source.
+Install lancher via shell script or build from source.
 
 ## Quick Installation
 
@@ -12,12 +12,7 @@ The installer will install `lancher` in `~/.local/bin`.
 
 ## Manual Installation
 
-For manual installation you need:
-
-- **Go 1.22+** - Build lancher binary
-- **git** - Clone repos and manage git templates
-
-At this point, proceed with the repo clone and the command installation.
+For manual installation you need Go 1.22+ and git. Proceed with repo clone and command installation.
 
 ```bash
 git clone https://github.com/lancher-dev/lancher.git
