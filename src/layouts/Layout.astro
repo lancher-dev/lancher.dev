@@ -1,14 +1,8 @@
 ---
-import Footer from "@/components/layout/Footer.astro";
-import Nav from "@/components/layout/Nav.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
 
 import "@/styles/global.css";
-
-interface Props {
-  title?: string;
-}
-
-const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -54,9 +48,9 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
   </head>
   <body
-    class="font-monospace bg-background text-foreground flex min-h-screen flex-col font-mono text-[14px] leading-[1.6]"
+    class="font-monospace flex min-h-screen flex-col font-mono text-[14px] leading-[1.6]"
   >
-    <Nav />
+    <Header />
     <main
       role="main"
       aria-label="Main content"

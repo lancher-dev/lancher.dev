@@ -14,3 +14,9 @@ export interface DocsNavItem {
   chapter?: string;
   orderChapter?: number;
 }
+
+export interface DocsHeadings {
+  depth: number;
+  slug: string;
+  text: string;
+}

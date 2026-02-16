@@ -7,6 +7,7 @@ import {
   formatChapterTitle,
   extractHeadingsFromMarkdown,
 } from "@/utils/docs";
+import ScrollToTop from "@/components/ScrollToTop";
 
 interface Props {
   currentSlug: string;
@@ -107,21 +108,12 @@ const headings = extractHeadingsFromMarkdown(entry.body || "");
   }
 </div>
 
-<!-- Scroll to top button -->
-<button
-  id="scroll-to-top"
-  class="bg-primary text-background hover:bg-primary-light pointer-events-none fixed right-6 bottom-6 z-50 flex h-12 w-12 items-center justify-center rounded-full opacity-0 shadow-lg transition-opacity duration-300 lg:hidden"
-  aria-label="Scroll to top"
->
-  <i class="nf nf-md-arrow_up text-2xl"></i>
-</button>
+<ScrollToTop client:load />
 
 <script is:inline>
   function initMobileNav() {
     const pageSelect = document.getElementById("page-select");
     const sectionSelect = document.getElementById("section-select");
-    const content = document.getElementById("content");
-    const scrollBtn = document.getElementById("scroll-to-top");
 
     // Page navigation
     if (pageSelect) {
@@ -142,22 +134,6 @@ const headings = extractHeadingsFromMarkdown(entry.body || "");
           setTimeout(() => (sectionSelect.value = ""), 500);
         }
       });
-    }
-
-    if (scrollBtn) {
-      const toggle = () => {
-        const show = window.scrollY > 300;
-        scrollBtn.classList.toggle("opacity-0", !show);
-        scrollBtn.classList.toggle("pointer-events-none", !show);
-        scrollBtn.classList.toggle("opacity-100", show);
-        scrollBtn.classList.toggle("pointer-events-auto", show);
-      };
-
-      window.addEventListener("scroll", toggle);
-      toggle();
-      scrollBtn.addEventListener("click", () =>
-        window.scrollTo({ top: 0, behavior: "smooth" }),
-      );
     }
   }
 

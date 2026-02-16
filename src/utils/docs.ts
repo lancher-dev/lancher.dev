@@ -1,6 +1,6 @@
 import { slug as githubSlug } from "github-slugger";
 import { ucfirst } from "./helpers";
-import type { ParsedDocsCollectionId } from "../@types/docs";
+import type { DocsHeadings, ParsedDocsCollectionId } from "../@types/docs";
 
 /**
  * Parse a doc collection ID into its components
@@ -109,12 +109,8 @@ export function generateHeadingSlug(text: string): string {
  * @param markdown - The markdown content
  * @returns Array of headings with depth, text, and slug
  */
-export function extractHeadingsFromMarkdown(markdown: string): Array<{
-  depth: number;
-  text: string;
-  slug: string;
-}> {
-  const headings: Array<{ depth: number; text: string; slug: string }> = [];
+export function extractHeadingsFromMarkdown(markdown: string): DocsHeadings[] {
+  const headings: DocsHeadings[] = [];
   const lines = markdown.split("\n");
 
   for (const line of lines) {
