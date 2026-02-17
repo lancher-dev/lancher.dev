@@ -1,6 +1,9 @@
 ---
 import Hero from "@/components/Hero.astro";
 import Layout from "@/layouts/Layout.astro";
+import Image from "astro/components/Image.astro";
+
+import DemoGif from "@/assets/demo.gif";
 ---
 
 <Layout>
@@ -8,6 +11,11 @@ import Layout from "@/layouts/Layout.astro";
 
   <section aria-labelledby="intro-heading">
     <h2 class="sr-only" id="intro-heading">Introduction</h2>
+    <Image
+      src={DemoGif}
+      alt="A demo of lancher in action, showing how it can be used to quickly launch a development server for a project."
+      class="mx-auto h-auto max-w-full rounded-lg object-cover shadow-lg"
+    />
     <p class="text-foreground-muted mt-6 mb-16 text-[1.1rem] leading-[1.8]">
       <p>
         To install <strong>lancher</strong>, run the following command in your
