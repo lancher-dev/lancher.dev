@@ -20,138 +20,80 @@ Lines starting with `#` are treated as comments and help document why specific p
 
 ```
 # Dependencies
-node_modules
+node_modules/
 pnpm-lock.yaml
 
-# Build output
-dist/
-build/
+# Build output (only at root)
+/dist
+/build
 
-# Logs
+# Logs everywhere
 *.log
+**/*.log
 ```
 
-Patterns match from the template root and are case-sensitive. An empty `.lancherignore` file will include all files in the template.
+Patterns are evaluated against each file's relative path from the template root. A pattern matches if it matches:
+- The file/directory name (basename)
+- The full relative path
+- Any component of the path
+
+Patterns use the system's filepath matching. An empty `.lancherignore` file will include *ALL* files in the template.
+
+> **Note**: Path separators are normalized automatically. Both `/` and `\` work on all platforms.
 
 ## Pattern Types
 
 ### Exact Match
 
+Matches the exact file or directory name anywhere in the template:
+
 ```
-node_modules
-package-lock.json
-.DS_Store
+node_modules        # Matches node_modules at any depth
+package-lock.json   # Matches this file anywhere
+.DS_Store           # Matches .DS_Store in any directory
 ```
 
 ### Wildcards
 
-Use `*` to match any characters:
+Use `*` to match any characters (except path separator) and `?` to match a single character:
 
 ```
-*.log
-*.tmp
-test-*
+*.log               # Matches any file ending with .log
+*.tmp               # Matches any .tmp file
+test-*              # Matches test-1, test-data, etc.
+file.?              # Matches file.a, file.1, etc.
+```
+
+### Root-Relative Patterns
+
+Patterns starting with `/` only match at the template root:
+
+```
+/config             # Matches config/ at root, NOT src/config
+/build              # Matches build/ at root only
+/*.log              # Matches .log files in root directory only
 ```
 
 ### Directories
 
-Trailing slash indicates a directory:
+Trailing slash indicates a directory (optional but clarifies intent):
 
 ```
-dist/
-build/
-.cache/
+dist/               # Matches dist directory (same as 'dist')
+build/              # Matches build directory
+.cache/             # Matches .cache directory
 ```
 
-### Glob Patterns
+### Recursive Patterns
 
-Use `**` for recursive matching:
-
-```
-**/*.test.js
-**/node_modules
-```
-
-## Common Patterns
-
-### Node.js
+Use `**` for recursive matching across any directory depth:
 
 ```
-node_modules
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
-.next
-.nuxt
-dist
-build
-*.log
-```
-
-### Python
-
-```
-__pycache__
-*.pyc
-*.pyo
-venv
-.venv
-.pytest_cache
-dist
-*.egg-info
-```
-
-### Go
-
-```
-vendor
-*.exe
-*.test
-.bin
-coverage.out
-```
-
-### Git & VCS
-
-```
-.git
-.svn
-.hg
-```
-
-### IDE & Editors
-
-```
-.vscode
-.idea
-*.swp
-*.swo
-.DS_Store
-Thumbs.db
-```
-
-### Secrets & Environment
-
-```
-.env
-.env.local
-.env.*.local
-*.key
-*.pem
-secrets.yaml
-```
-
-### Build Artifacts
-
-```
-dist
-build
-out
-.next
-.nuxt
-target
-*.o
-*.so
+**/*.test.js        # Matches .test.js files at any depth
+**/node_modules     # Matches node_modules at any level
+**/vendor           # Matches vendor directory anywhere
+dist/**             # Matches everything under dist/
+src/**/test         # Matches test directories under src/
 ```
 
 ## Deprecated Method
@@ -167,4 +109,4 @@ ignore:
   - "*.log"
 ```
 
-If both files exist, `.lancherignore` takes precedence.
+**Precedence**: If both `.lancherignore` and the `ignore` field in `.lancher.yaml` exist, `.lancherignore` takes precedence and the YAML ignore field is ignored with a deprecation warning.
