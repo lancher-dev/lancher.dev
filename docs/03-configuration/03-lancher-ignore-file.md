@@ -1,4 +1,4 @@
-# Ignore Patterns
+# .lancherignore
 
 Define which files and directories to exclude during template copy operations. Patterns use glob syntax and are case-sensitive, evaluated against each file's relative path within the template.
 
@@ -33,11 +33,12 @@ pnpm-lock.yaml
 ```
 
 Patterns are evaluated against each file's relative path from the template root. A pattern matches if it matches:
+
 - The file/directory name (basename)
 - The full relative path
 - Any component of the path
 
-Patterns use the system's filepath matching. An empty `.lancherignore` file will include *ALL* files in the template.
+Patterns use the system's filepath matching. An empty `.lancherignore` file will include _ALL_ files in the template.
 
 > **Note**: Path separators are normalized automatically. Both `/` and `\` work on all platforms.
 

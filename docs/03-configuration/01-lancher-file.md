@@ -85,7 +85,7 @@ Commands run sequentially in the project directory. Users must confirm before ex
 ### ignore
 
 > [!WARNING]
-> **Deprecated**: Use `.lancherignore` file instead. This field will be removed in a future version. See [Ignore Patterns](./03-ignore-patterns.md) for details.
+> **Deprecated**: Use `.lancherignore` file instead. This field will be removed in a future version. See [`.lancherignore`](./03-lancher-ignore-file.md) for details.
 
 **Type:** `array of strings`
 **Optional**
@@ -102,7 +102,7 @@ ignore:
 
 ## Examples
 
-### Node.js Project
+<details>
 
 ```yaml
 name: Node.js API
@@ -116,7 +116,12 @@ hooks:
   - git init
 ```
 
-### Python Project
+<summary>
+Node.js Project
+</summary>
+</details>
+
+<details>
 
 ```yaml
 name: Python CLI
@@ -128,7 +133,12 @@ hooks:
   - source venv/bin/activate && pip install -r requirements.txt
 ```
 
-### Monorepo
+<summary>
+Python Project
+</summary>
+</details>
+
+<details>
 
 ```yaml
 name: Full-Stack Monorepo
@@ -141,4 +151,7 @@ hooks:
   - npx husky install
 ```
 
-> **Note**: For ignore patterns, use a `.lancherignore` file in your template root. See [Ignore Patterns](./03-ignore-patterns.md) for details.
+<summary>
+Monorepo
+</summary>
+</details>
