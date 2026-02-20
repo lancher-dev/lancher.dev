@@ -20,8 +20,6 @@ lancher template list
 
 Verify template name and add if missing.
 
----
-
 ## Git Clone Failed
 
 Git cloning can fail due to authentication, network, or invalid URLs.
@@ -38,8 +36,6 @@ Error: failed to clone repository
 - Verify git credentials (SSH keys, tokens)
 - Test repository URL manually: `git clone <url>`
 - Try HTTPS instead of SSH (or vice versa)
-
----
 
 ## Hook Execution Failed
 
@@ -58,8 +54,6 @@ Error: hook 'npm install' failed with exit code 1
 - Check command syntax in `.lancher.yaml`
 - Review command output for specific errors
 
----
-
 ## Permission Denied
 
 **Error:**
@@ -75,8 +69,6 @@ Error: permission denied writing to storage directory
 - Check disk space: `df -h`
 - Run with appropriate permissions (avoid `sudo` when possible)
 
----
-
 ## Destination Already Exists
 
 **Error:**
@@ -87,8 +79,6 @@ Error: destination directory already exists
 
 **Solution:**
 Remove or rename the existing directory, or choose a different destination.
-
----
 
 ## Invalid YAML
 
@@ -105,8 +95,6 @@ Error: invalid .lancher.yaml syntax
 - Quote strings with special characters
 - Verify array/object structure
 
----
-
 ## Build Failed
 
 **Error:**
@@ -121,8 +109,6 @@ Error: failed to build lancher
 - Update Go if needed
 - Check GOPATH and GOBIN
 - Try: `go clean -cache && go build`
-
----
 
 ## Template Update Failed
 
@@ -140,8 +126,6 @@ lancher template update <name> -d <new-path>
 ```
 
 Or remove and re-add template.
-
----
 
 ## Common Issues
 
