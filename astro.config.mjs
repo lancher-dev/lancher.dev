@@ -1,10 +1,14 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import path from "path";
 import { fileURLToPath } from "url";
 
 import tailwindcss from "@tailwindcss/vite";
+
+// Remark plugins
 import { remarkAlert } from "remark-github-blockquote-alert";
+import remarkDirective from "remark-directive";
+import remarkCodeTabs from "./src/utils/remark-code-tabs.ts";
 
 import react from "@astrojs/react";
 
@@ -33,7 +37,7 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [remarkAlert],
+    remarkPlugins: [remarkAlert, remarkDirective, remarkCodeTabs],
     rehypePlugins: [],
     shikiConfig: {
       theme: "github-dark",
@@ -42,4 +46,23 @@ export default defineConfig({
   },
 
   integrations: [react()],
+
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: "Inter",
+        cssVariable: "--font-inter",
+        weights: [400, 500, 600],
+        styles: ["normal"],
+      },
+      {
+        provider: fontProviders.google(),
+        name: "Merriweather",
+        cssVariable: "--font-merriweather",
+        weights: [300, 400, 700],
+        styles: ["normal", "italic"],
+      },
+    ],
+  },
 });

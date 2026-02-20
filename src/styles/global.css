@@ -31,6 +31,11 @@
   --color-warning: #e0af68;
   --color-info: #7aa2f7;
   --color-success: #89b29e;
+
+  /* Fonts */
+  --font-serif: "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Fira Code", monospace;
 }
 
 @layer base {
