@@ -1,28 +1,18 @@
-/* JAAD overrides — dark-theme values matching the original src/styles/markdown.css.
-   This file MUST be imported AFTER jaad/styles.css so the cascade order ensures
-   these :root declarations win over jaad/defaults.css. */
-
 :root {
-  /* ── Typography ──────────────────────────────────────────────────────────── */
-  --jaad-font-mono: var(
-    --font-mono
-  ); /* fix broken --font-monospace ref in defaults */
+  /* Typography */
+  --jaad-font-mono: var(--font-mono);
 
-  /* ── Inline code ─────────────────────────────────────────────────────────── */
+  /* Inline code */
   --jaad-code-bg: var(--color-surface); /* #0d1117 */
   --jaad-code-border: var(--color-border); /* #444    */
   --jaad-code-fg: var(--color-primary); /* sage green */
 
-  /* ── Code blocks (pre) ───────────────────────────────────────────────────── */
+  /* Code blocks (pre)  */
   --jaad-pre-bg: var(--color-background-secondary); /* #1a1a1a */
   --jaad-pre-border: var(--color-border); /* #444    */
-  /* Base text color for code blocks. Shiki span inline-styles still override
-     per-token, but unstyled text falls back to the readable foreground color,
-     which is the same effective result as the original markdown.css (no explicit
-     color set → shiki's dark foreground → invisible on dark bg → now readable). */
   --jaad-pre-fg: var(--color-foreground); /* #e0e0e0 */
 
-  /* ── Copy button ─────────────────────────────────────────────────────────── */
+  /* Copy button */
   --jaad-copy-btn-bg: var(--color-surface);
   --jaad-copy-btn-border: var(--color-border-light); /* #555 */
   --jaad-copy-btn-fg: var(--color-foreground-secondary);
@@ -30,33 +20,35 @@
   --jaad-copy-btn-hover-border: rgb(from var(--color-primary) r g b / 0.4);
   --jaad-copy-btn-hover-fg: var(--color-foreground-bright);
 
-  /* ── Blockquote ──────────────────────────────────────────────────────────── */
+  /* Blockquote */
   --jaad-blockquote-border: var(--color-primary);
   --jaad-blockquote-fg: var(--color-primary);
 
-  /* ── Emphasis ────────────────────────────────────────────────────────────── */
+  /* Emphasis */
   --jaad-em-fg: var(--color-primary);
 
-  /* ── Tables ──────────────────────────────────────────────────────────────── */
+  /* Tables */
   --jaad-table-border: var(--color-border); /* #444 */
   --jaad-table-hover-bg: var(--color-surface-hover); /* #222 */
 
-  /* ── Code tabs ───────────────────────────────────────────────────────────── */
+  /* Code tabs */
   --jaad-tabs-border: var(--color-border); /* #444 */
   --jaad-tabs-header-bg: var(--color-background-tertiary); /* #2a2a2a */
   --jaad-tabs-btn-hover-bg: var(--color-surface-hover); /* #222   */
   --jaad-tabs-btn-active-bg: var(--color-background-secondary); /* #1a1a1a */
 
-  /* ── Details / Summary ───────────────────────────────────────────────────── */
+  /* Details / Summary */
   --jaad-details-border: var(--color-border); /* #444 */
 
-  /* ── Alerts — original had no per-type styling; all use primary / tertiary ─ */
+  /* Spoiler  */
+  --jaad-spoiler-hidden-color: var(--color-background-secondary);
+  --jaad-spoiler-revealed-bg: var(--color-background-secondary);
+  --jaad-spoiler-revealed-fg: var(--color-foreground);
+
+  /* Alerts — original had no per-type styling; all use primary / tertiary */
   --jaad-alert-note-bg: var(--color-background-tertiary);
   --jaad-alert-tip-bg: var(--color-background-tertiary);
   --jaad-alert-important-bg: var(--color-background-tertiary);
   --jaad-alert-warning-bg: var(--color-background-tertiary);
   --jaad-alert-caution-bg: var(--color-background-tertiary);
-
-  /* ── Spoiler ───────────────────────────────────────────────────────── */
-  --jaad-spoiler-bg: var(--color-background-secondary);
 }
