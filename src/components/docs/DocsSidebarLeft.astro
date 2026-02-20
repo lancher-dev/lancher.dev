@@ -67,7 +67,7 @@ sections.sort((a, b) => a.order - b.order);
             <a
               href={section.item.href}
               class:list={[
-                "block rounded px-3 py-1.5 text-sm font-medium no-underline transition-colors",
+                "block rounded px-3 py-1.5 text-sm no-underline transition-colors",
                 section.item.isActive
                   ? "bg-primary/10 text-primary font-semibold"
                   : "text-foreground hover:bg-primary/10 hover:text-primary",
@@ -88,7 +88,7 @@ sections.sort((a, b) => a.order - b.order);
                   <a
                     href={item.href}
                     class:list={[
-                      "block rounded-r px-3 py-1.5 text-sm font-medium no-underline transition-colors",
+                      "block rounded-r px-3 py-1.5 text-sm no-underline transition-colors",
                       item.isActive
                         ? "border-primary bg-primary/10 text-primary -ml-px border-l-2 pl-2.75 font-semibold"
                         : "text-foreground hover:bg-primary/10 hover:text-primary",
