@@ -56,6 +56,7 @@ You can install lancher via [Homebrew Taps](https://docs.brew.sh/Taps) . All you
 
 ```bash
 brew tap lancher-dev/lancher
+brew install lancher
 ```
 
 ## Manual Installation
