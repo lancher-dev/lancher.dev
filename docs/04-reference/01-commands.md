@@ -147,19 +147,6 @@ lancher -v
 lancher --version
 ```
 
-## `upgrade`
-
-Check for updates and upgrade to the latest version
-
-```bash
-lancher upgrade
-lancher upgrade --force
-```
-
-**Flags:**
-
-- `-f, --force` - Force upgrade even if already on latest version
-
 ## `help`
 
 Display help.
