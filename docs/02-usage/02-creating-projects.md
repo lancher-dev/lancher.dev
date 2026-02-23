@@ -63,5 +63,5 @@ done
 - `--no-git` - Skip git init
 - `--hook` - Execute all hooks from `.lancher.yaml`
 - `--no-hooks` - Skip hooks execution
-- `--config` - Clone lancher files
-- `--no-config` - Skip lancher files clonation
+- `--keep-config` - Keep lancher config and ignore files in the new project
+- `--no-keep-config` - Remove lancher config and ignore files

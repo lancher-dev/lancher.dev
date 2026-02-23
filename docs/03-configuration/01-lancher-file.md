@@ -16,7 +16,7 @@ hooks:
   - command2
 ```
 
-The file can be named `.lancher.yaml`, `.lancher.yml`, `lancher.yaml`, or `lancher.yml`. If multiple configuration files exist, an error prompts you to keep only one. View template status with `lancher template ls`.
+The file can be named `.lancher.yaml`, `.lancher.yml`, `lancher.yaml`, or `lancher.yml`. If multiple configuration files exist, a warning is displayed and lancher uses the highest-priority one (`.lancher.yaml` > `.lancher.yml` > `lancher.yaml` > `lancher.yml`). View template status with `lancher template ls`.
 
 ## Fields
 
@@ -103,6 +103,7 @@ ignore:
 ## Examples
 
 <details>
+<summary>Node.js Project</summary>
 
 ```yaml
 name: Node.js API
@@ -116,12 +117,10 @@ hooks:
   - git init
 ```
 
-<summary>
-Node.js Project
-</summary>
 </details>
 
 <details>
+<summary>Python Project</summary>
 
 ```yaml
 name: Python CLI
@@ -133,12 +132,10 @@ hooks:
   - source venv/bin/activate && pip install -r requirements.txt
 ```
 
-<summary>
-Python Project
-</summary>
 </details>
 
 <details>
+<summary>Monorepo</summary>
 
 ```yaml
 name: Full-Stack Monorepo
@@ -151,7 +148,4 @@ hooks:
   - npx husky install
 ```
 
-<summary>
-Monorepo
-</summary>
 </details>

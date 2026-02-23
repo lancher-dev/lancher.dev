@@ -32,11 +32,7 @@ pnpm-lock.yaml
 **/*.log
 ```
 
-Patterns are evaluated against each file's relative path from the template root. A pattern matches if it matches:
-
-- The file/directory name (basename)
-- The full relative path
-- Any component of the path
+Patterns are evaluated against each file's relative path from the template root, matching against the basename, the full relative path, and any individual path component.
 
 Patterns use the system's filepath matching. An empty `.lancherignore` file will include _ALL_ files in the template.
 

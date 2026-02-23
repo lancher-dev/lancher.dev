@@ -13,15 +13,15 @@ lancher create --template <template> --destination <path_to_destination>
 
 **Flags:**
 
-- `-t, --template` - Template name
-- `-d, --destination` - Destination directory
+- `-t, --template <name>` - Template name
+- `-d, --destination <path>` - Destination directory
 - `-p, --print` - Show command output
-- `--git` - Init git repository after create
-- `--no-git` - Skip git init repository
-- `--hooks` - Execute all hooks after create
-- `--no-hooks` - Skip hooks execution after create
-- `--config` - Clone lancher files
-- `--no-config` - Skip lancher files clonation
+- `--git` - Init git repository
+- `--no-git` - Skip git init
+- `--hook` - Execute all hooks from `.lancher.yaml`
+- `--no-hooks` - Skip hooks execution
+- `--keep-config` - Keep lancher config and ignore files in the new project
+- `--no-keep-config` - Remove lancher config and ignore files
 
 **Interactive:**
 
@@ -90,12 +90,7 @@ lancher template ls
 lancher templates
 ```
 
-**Output:**
-
-- Template name
-- Storage path
-- Git URL (if applicable)
-- Metadata information (author, version, etc.)
+**Output:** for each template: name, storage path, and metadata from `.lancher.yaml` (description, author, version) when available.
 
 ## `template update`
 

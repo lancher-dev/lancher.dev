@@ -30,12 +30,7 @@ Git cloning can fail due to authentication, network, or invalid URLs.
 Error: failed to clone repository
 ```
 
-**Solutions:**
-
-- Check network connectivity
-- Verify git credentials (SSH keys, tokens)
-- Test repository URL manually: `git clone <url>`
-- Try HTTPS instead of SSH (or vice versa)
+**Solutions:** Check network connectivity and verify your git credentials (SSH keys, tokens). Test the URL manually with `git clone <url>` and try switching between HTTPS and SSH if one fails.
 
 ## Hook Execution Failed
 
@@ -47,12 +42,7 @@ Hooks fail when commands return non-zero exit codes, usually indicating missing 
 Error: hook 'npm install' failed with exit code 1
 ```
 
-**Solutions:**
-
-- Verify required tools are installed (`npm`, `git`, etc.)
-- Test command manually in project directory
-- Check command syntax in `.lancher.yaml`
-- Review command output for specific errors
+**Solutions:** Verify the required tools are installed (`npm`, `git`, etc.) and test the command manually in the project directory. Review the command syntax in `.lancher.yaml` and read the output carefully for specific error details.
 
 ## Permission Denied
 
@@ -62,12 +52,7 @@ Error: hook 'npm install' failed with exit code 1
 Error: permission denied writing to storage directory
 ```
 
-**Solutions:**
-
-- Check directory permissions: `ls -la ~/.local/share/lancher`
-- Ensure storage directory exists
-- Check disk space: `df -h`
-- Run with appropriate permissions (avoid `sudo` when possible)
+**Solutions:** Check directory permissions with `ls -la ~/.local/share/lancher`, ensure the storage directory exists, verify available disk space with `df -h`, and confirm lancher is running as your own user (avoid `sudo`).
 
 ## Destination Already Exists
 
@@ -88,12 +73,7 @@ Remove or rename the existing directory, or choose a different destination.
 Error: invalid .lancher.yaml syntax
 ```
 
-**Solutions:**
-
-- Validate YAML syntax: https://www.yamllint.com
-- Check indentation (use spaces, not tabs)
-- Quote strings with special characters
-- Verify array/object structure
+**Solutions:** Validate the YAML syntax at https://www.yamllint.com. Use spaces (not tabs) for indentation, quote strings that contain special characters, and double-check the array/object structure.
 
 ## Build Failed
 
@@ -103,12 +83,7 @@ Error: invalid .lancher.yaml syntax
 Error: failed to build lancher
 ```
 
-**Solutions:**
-
-- Verify Go version: `go version` (requires 1.22+)
-- Update Go if needed
-- Check GOPATH and GOBIN
-- Try: `go clean -cache && go build`
+**Solutions:** Verify your Go version (`go version`, requires 1.22+) and update if necessary. Check that `GOPATH` and `GOBIN` are configured correctly, then try `go clean -cache && go build`.
 
 ## Template Update Failed
 
@@ -138,26 +113,16 @@ ls -la ~/.local/share/lancher/templates
 
 ### Hooks Don't Execute
 
-- Check user confirmation prompt
-- Verify hook syntax in `.lancher.yaml`
-- Test hooks manually in project directory
+Check that you confirmed the prompt (or used `--hooks` to skip it), verify the hook syntax in `.lancher.yaml`, and test the commands manually in the project directory.
 
 ### Git Updates Don't Work
 
-- Verify template was added from git URL
-- Check git repository access
-- Try: `cd <template-dir> && git pull`
+Verify the template was originally added from a git URL. Check that you still have access to the remote repository, or try running `git pull` manually inside the template directory (`cd <template-dir> && git pull`).
 
 ## Getting Help
 
 If you can't find a solution to your problem, the best way to get help is through the lancher GitHub repository. Start by searching existing [issues](https://github.com/lancher-dev/lancher/issues) and [discussions](https://github.com/lancher-dev/lancher/discussions) to see if someone has encountered the same problem. Many common questions have already been answered in these threads.
 
-If you don't find what you're looking for, feel free to [open a new issue](https://github.com/lancher-dev/lancher/issues/new). When creating an issue, include:
-
-- Lancher version (`lancher version`)
-- Operating system and version
-- Complete error messages
-- Steps to reproduce the problem
-- Template configuration (`.lancher.yaml`) if relevant
+If you don't find what you're looking for, feel free to [open a new issue](https://github.com/lancher-dev/lancher/issues/new). When opening an issue, include your lancher version (`lancher --version`), operating system and version, complete error messages, steps to reproduce the problem, and the template configuration (`.lancher.yaml`) if relevant.
 
 The community and maintainers will help diagnose and resolve your issue.

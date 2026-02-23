@@ -65,7 +65,7 @@ lancher template list
 lancher template ls
 ```
 
-The list command provides a quick overview of all available templates, showing name, storage path, git URL for remote templates, and metadata from the template configuration.
+The list command provides a quick overview of all available templates, showing name, storage path, and any metadata from the template configuration (description, author, version) when a `.lancher.yaml` is present.
 
 ## Update Templates
 
