@@ -12,6 +12,16 @@ The installer will install `lancher` in `~/.local/bin`.
 
 > **Note:** The install script (and the corresponding [uninstall script](https://lancher.dev/uninstall.sh)) are designed to install a **specific fixed version** of lancher. They do not automatically track or pull in newer releases. If you want automatic updates, use your OS package manager instead (see below).
 
+## Arch Linux (AUR)
+
+lancher is available on the [AUR](https://aur.archlinux.org/packages/lancher). Install it with your preferred AUR helper, for example:
+
+```bash
+yay -S lancher
+# or
+paru -S lancher
+```
+
 ## Ubuntu / Debian
 
 ### Via APT repository
@@ -40,14 +50,12 @@ You can also download a `.deb` package directly from the [GitHub Releases](https
 sudo dpkg -i lancher_<version>_linux_amd64.deb
 ```
 
-## Arch Linux (AUR)
+## Homebrew
 
-lancher is available on the [AUR](https://aur.archlinux.org/packages/lancher). Install it with your preferred AUR helper, for example:
+You can install lancher via [Homebrew Taps](https://docs.brew.sh/Taps) . All you need to do is:
 
 ```bash
-yay -S lancher
-# or
-paru -S lancher
+brew tap lancher-dev/lancher
 ```
 
 ## Manual Installation
