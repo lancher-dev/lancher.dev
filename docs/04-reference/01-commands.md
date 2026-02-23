@@ -20,6 +20,8 @@ lancher create --template <template> --destination <path_to_destination>
 - `--no-git` - Skip git init repository
 - `--hooks` - Execute all hooks after create
 - `--no-hooks` - Skip hooks execution after create
+- `--config` - Clone lancher files
+- `--no-config` - Skip lancher files clonation
 
 **Interactive:**
 
