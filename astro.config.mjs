@@ -1,14 +1,12 @@
 // @ts-check
+
 import { defineConfig, fontProviders } from "astro/config";
 import path from "path";
 import { fileURLToPath } from "url";
 
 import tailwindcss from "@tailwindcss/vite";
 
-// Remark plugins
-import { remarkAlert } from "remark-github-blockquote-alert";
-import remarkDirective from "remark-directive";
-import remarkCodeTabs from "./src/utils/remark-code-tabs.ts";
+import jaamd from "jaamd";
 
 import react from "@astrojs/react";
 
@@ -16,6 +14,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
+  // Put here the site url of your production website, for example: https://www.example.com
   site: "https://lancher.dev",
   base: "/",
 
@@ -36,16 +35,7 @@ export default defineConfig({
     },
   },
 
-  markdown: {
-    remarkPlugins: [remarkAlert, remarkDirective, remarkCodeTabs],
-    rehypePlugins: [],
-    shikiConfig: {
-      theme: "github-dark",
-      wrap: true,
-    },
-  },
-
-  integrations: [react()],
+  integrations: [react(), jaamd()],
 
   experimental: {
     fonts: [

@@ -1,0 +1,78 @@
+:root {
+  /* Colors */
+  --jaamd-color-fg: var(--color-foreground);
+  --jaamd-color-fg-bright: var(--color-foreground-bright);
+  --jaamd-color-primary: var(--color-primary);
+  --jaamd-color-primary-light: var(--color-primary-light);
+
+  /* Typography */
+  --jaamd-font-sans: var(--font-sans), sans-serif;
+  --jaamd-font-serif: var(--font-serif), Georgia, serif;
+  --jaamd-font-mono: var(--font-mono), monospace;
+  --jaamd-font-size: 1.125rem;
+  --jaamd-line-height: 1.6;
+
+  /* Headings */
+  --jaamd-heading-border-color: rgb(from var(--color-primary) r g b / 0.4);
+
+  /* Inline code */
+  --jaamd-code-bg: var(--color-surface); /* #0d1117 */
+  --jaamd-code-border: var(--color-border); /* #444    */
+  --jaamd-code-fg: var(--color-primary); /* sage green */
+
+  /* Code blocks (pre)  */
+  --jaamd-pre-bg: var(--color-background-secondary); /* #1a1a1a */
+  --jaamd-pre-border: var(--color-border); /* #444    */
+  --jaamd-pre-fg: var(--color-foreground); /* #e0e0e0 */
+
+  /* Copy button */
+  --jaamd-copy-btn-bg: var(--color-surface);
+  --jaamd-copy-btn-border: var(--color-border-light); /* #555 */
+  --jaamd-copy-btn-fg: var(--color-foreground-secondary);
+  --jaamd-copy-btn-hover-bg: var(--color-surface-hover);
+  --jaamd-copy-btn-hover-border: rgb(from var(--color-primary) r g b / 0.4);
+  --jaamd-copy-btn-hover-fg: var(--color-foreground-bright);
+
+  /* Blockquote */
+  --jaamd-blockquote-border: var(--color-primary);
+  --jaamd-blockquote-fg: var(--color-primary);
+  --jaamd-blockquote-bg: var(--color-background-tertiary);
+
+  /* Emphasis */
+  --jaamd-em-fg: var(--color-primary);
+
+  /* Horizontal rule */
+  --jaamd-hr-color: rgb(from var(--color-primary) r g b / 0.4);
+
+  /* Tables */
+  --jaamd-table-border: var(--color-border); /* #444 */
+  --jaamd-table-header-bg: var(--color-background-tertiary);
+  --jaamd-table-hover-bg: var(--color-surface-hover); /* #222 */
+
+  /* Code tabs */
+  --jaamd-tabs-border: var(--color-border); /* #444 */
+  --jaamd-tabs-header-bg: var(--color-background-tertiary); /* #2a2a2a */
+  --jaamd-tabs-btn-hover-bg: var(--color-surface-hover); /* #222   */
+  --jaamd-tabs-btn-active-bg: var(--color-background-secondary); /* #1a1a1a */
+
+  /* Details / Summary */
+  --jaamd-details-bg: var(--color-background-tertiary);
+  --jaamd-details-border: var(--color-border); /* #444 */
+
+  /* Spoiler  */
+  --jaamd-spoiler-hidden-color: var(--color-background-secondary);
+  --jaamd-spoiler-revealed-bg: var(--color-background-secondary);
+  --jaamd-spoiler-revealed-fg: var(--color-foreground);
+
+    /* Alerts */
+  --jaamd-alert-note-color: #0969da;
+  --jaamd-alert-note-bg: var(--color-background-tertiary);
+  --jaamd-alert-tip-color: #1a7f37;
+  --jaamd-alert-tip-bg: var(--color-background-tertiary);
+  --jaamd-alert-important-color: #8250df;
+  --jaamd-alert-important-bg: var(--color-background-tertiary);
+  --jaamd-alert-warning-color: #9a6700;
+  --jaamd-alert-warning-bg: var(--color-background-tertiary);
+  --jaamd-alert-caution-color: #cf222e;
+  --jaamd-alert-caution-bg: var(--color-background-tertiary);
+}
