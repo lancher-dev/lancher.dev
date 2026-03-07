@@ -35,7 +35,12 @@ export default defineConfig({
     },
   },
 
-  integrations: [react(), jaamd()],
+  integrations: [
+    react(),
+    jaamd({
+      theme: "github-dark",
+    }),
+  ],
 
   experimental: {
     fonts: [

@@ -27,8 +27,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       jaamd:
-        specifier: ^0.1.10
-        version: 0.1.10(astro@5.18.0(@types/node@24.9.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.2))
+        specifier: ^0.1.14
+        version: 0.1.14(astro@5.18.0(@types/node@24.9.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.2))
       react:
         specifier: ^19.2.4
         version: 19.2.4
@@ -1709,8 +1709,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  jaamd@0.1.10:
-    resolution: {integrity: sha512-kqhaUMztzm1oXG3QzNAbeVAhBJubUOZU0cjD4oaCuhRffRdvxCeaSCXdpTDJ+dEvtqFAdxsfZZq1HH/77lS+hg==}
+  jaamd@0.1.14:
+    resolution: {integrity: sha512-IaXeJHpJXTYOPza/pqPCaEK2/mKjKaW3euyphvTger/72ZCj5t/PGszTuLX/+8bULfg1Qhfd5CY4WpmN6tHgcA==}
     peerDependencies:
       astro: '>=4.0.0'
 
@@ -4331,7 +4331,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  jaamd@0.1.10(astro@5.18.0(@types/node@24.9.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.2)):
+  jaamd@0.1.14(astro@5.18.0(@types/node@24.9.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.2)):
     dependencies:
       astro: 5.18.0(@types/node@24.9.1)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.52.5)(typescript@5.9.3)(yaml@2.8.2)
       remark-directive: 4.0.0
