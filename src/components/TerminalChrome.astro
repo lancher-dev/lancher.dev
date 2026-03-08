@@ -1,0 +1,37 @@
+---
+/**
+ * TerminalChrome
+ * The three-dot title bar for terminal blocks.
+ *
+ * Props:
+ *   title      — label on the right (default: empty)
+ *   standalone — when true, adds its own top+side border and rounded-t-sm
+ *                so it can be used without an external wrapper (e.g. in Hero).
+ *                When false (default), assumes the parent handles the border.
+ */
+interface Props {
+  title?: string;
+  standalone?: boolean;
+}
+
+const { title = "", standalone = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    "bg-background-secondary flex h-8 items-center gap-1.5 px-3",
+    "border-border-dark border-b",
+    standalone && "border-border-dark rounded-t-sm border",
+  ]}
+>
+  <span class="bg-error h-2 w-2 shrink-0 rounded-full opacity-60"></span>
+  <span class="bg-warning h-2 w-2 shrink-0 rounded-full opacity-60"></span>
+  <span class="bg-primary-dark h-2 w-2 shrink-0 rounded-full"></span>
+  {
+    title && (
+      <span class="text-border-light ml-auto truncate pl-2 font-mono text-[0.7rem] leading-none tracking-[.05em]">
+        {title}
+      </span>
+    )
+  }
+</div>

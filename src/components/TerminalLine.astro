@@ -1,0 +1,45 @@
+---
+/**
+ * TerminalLine
+ * Renders one line of terminal output from an array of typed tokens.
+ * Token types → Tailwind color classes are defined here, not in content files.
+ */
+
+type TokenType =
+  | "prompt"
+  | "command"
+  | "arg"
+  | "output"
+  | "success"
+  | "warning"
+  | "comment"
+  | "key"
+  | "value";
+
+interface Token {
+  type: TokenType;
+  text: string;
+}
+
+interface Props {
+  tokens: Token[];
+}
+
+const { tokens } = Astro.props;
+
+const CLASS: Record<TokenType, string> = {
+  prompt: "text-primary-dark",
+  command: "text-foreground-bright",
+  arg: "text-info",
+  output: "text-border-light",
+  success: "text-success",
+  warning: "text-warning",
+  comment: "text-border-light",
+  key: "text-info",
+  value: "text-border-light",
+};
+---
+
+<div>
+  {tokens.map(({ type, text }) => <span class={CLASS[type]}>{text}</span>)}
+</div>

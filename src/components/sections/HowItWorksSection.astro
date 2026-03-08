@@ -1,0 +1,105 @@
+---
+import { getCollection } from "astro:content";
+import TerminalChrome from "@/components/TerminalChrome.astro";
+import TerminalLine from "@/components/TerminalLine.astro";
+
+const tabs = (await getCollection("how-it-works")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<section id="how" aria-labelledby="how-heading">
+  <h2
+    id="how-heading"
+    class="text-foreground-bright mb-8 font-serif text-[1.6rem] font-light"
+  >
+    How it works.
+  </h2>
+
+  <div class="flex flex-col md:flex-row md:gap-10">
+    <!-- Tab list -->
+    <ul
+      role="tablist"
+      aria-label="How it works"
+      class="border-border-dark mb-6 flex shrink-0 border-b md:mb-0 md:w-36 md:flex-col md:border-b-0"
+    >
+      {
+        tabs.map(({ id, data }, i) => (
+          <li role="presentation" class="flex-1 md:w-full md:flex-none">
+            <button
+              id={`tab-${id}`}
+              role="tab"
+              aria-selected={i === 0 ? "true" : "false"}
+              aria-controls={`tab-${id}-panel`}
+              data-active-class="text-foreground-bright border-primary-dark"
+              data-inactive-class="text-foreground-secondary border-transparent"
+              class:list={[
+                "tab-btn flex w-full items-center justify-center md:justify-start",
+                "h-9 px-2 md:h-10 md:pr-4 md:pl-3",
+                "border-b-2 md:border-b-0 md:border-l-2",
+                "font-mono text-[0.72rem] whitespace-nowrap transition-colors md:text-[0.8rem]",
+                i === 0
+                  ? "text-foreground-bright border-primary-dark"
+                  : "text-foreground-secondary hover:text-foreground-bright border-transparent",
+              ]}
+            >
+              <span class="md:hidden">
+                {data.label
+                  .replace("template ", "")
+                  .replace(".lancher.yaml", ".yaml")}
+              </span>
+              <span class="hidden md:inline">{data.label}</span>
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!--
+      Panel stack — CSS grid trick.
+      All panels share [grid-area:1/1] so the wrapper height equals
+      the tallest panel. Inactive panels are opacity-0 + pointer-events-none
+      but never leave the DOM — no height jump on any breakpoint.
+    -->
+    <div class="grid min-w-0 flex-1">
+      <div class="grid [grid-area:1/1]">
+        {
+          tabs.map(({ id, data }, i) => (
+            <div
+              id={`tab-${id}-panel`}
+              role="tabpanel"
+              aria-labelledby={`tab-${id}`}
+              class:list={[
+                "tab-panel flex flex-col gap-4 transition-opacity duration-150 [grid-area:1/1]",
+                i !== 0 && "pointer-events-none opacity-0",
+              ]}
+            >
+              <div class="border-border-dark overflow-hidden rounded-sm border">
+                <TerminalChrome title={data.label} />
+                <div class="term-block bg-surface px-4 py-3.5 font-mono text-[0.8rem] leading-[1.9]">
+                  {data.lines.map((tokens) => (
+                    <TerminalLine tokens={tokens} />
+                  ))}
+                </div>
+              </div>
+
+              <div class="pb-1">
+                <h3 class="text-foreground-bright mb-1.5 font-mono text-[0.9rem] font-medium">
+                  {data.title}
+                </h3>
+                <p class="text-foreground-secondary text-[0.88rem] leading-[1.85]">
+                  {data.desc}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initTabs } from "@/utils/tabs";
+  initTabs(".tab-btn", ".tab-panel");
+</script>

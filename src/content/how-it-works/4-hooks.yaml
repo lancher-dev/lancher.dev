@@ -1,0 +1,19 @@
+order: 4
+label: ".lancher.yaml"
+title: "Automate the boring parts"
+desc: >
+  Drop a .lancher.yaml in any template to define metadata and post-create hooks.
+  git init, go mod tidy, env setup — anything you'd run manually, run automatically.
+lines:
+  - - { type: comment, text: "  # .lancher.yaml" }
+  - - { type: key,     text: "  name" }
+    - { type: value,   text: ": go-api" }
+  - - { type: key,     text: "  hooks" }
+    - { type: value,   text: ":" }
+  - - { type: value,   text: "    post_create:" }
+  - - { type: value,   text: "      - " }
+    - { type: command, text: "git init" }
+  - - { type: value,   text: "      - " }
+    - { type: command, text: "go mod tidy" }
+  - - { type: value,   text: "      - " }
+    - { type: command, text: "cp .env.example .env" }

@@ -1,75 +1,116 @@
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
-
 @import "tailwindcss";
 
 @theme {
-  /* Background colors */
-  --color-background: #221e22;
+  /* Backgrounds */
+  --color-background:           #221e22;
   --color-background-secondary: #1a1a1a;
-  --color-background-tertiary: #2a2a2a;
-  --color-surface: #0d1117;
-  --color-surface-hover: #222;
+  --color-background-tertiary:  #2a2a2a;
+  --color-surface:              #0d1117;
+  --color-surface-hover:        #222;
 
-  /* Primary colors - Sage green */
-  --color-primary: #89b29ee6;
-  --color-primary-dark: #6a9180;
+  /* Primary — sage green */
+  --color-primary:       #89b29ee6;
+  --color-primary-dark:  #6a9180;
   --color-primary-light: #c5d4c8;
 
-  /* Foreground colors */
-  --color-foreground: #e0e0e0;
+  /* Foreground */
+  --color-foreground:           #e0e0e0;
   --color-foreground-secondary: #e0e0e090;
-  --color-foreground-muted: #bbb;
-  --color-foreground-bright: #f2f2f2e6;
+  --color-foreground-muted:     #bbb;
+  --color-foreground-bright:    #c5d4c8;
 
-  /* Border colors */
-  --color-border: #444;
+  /* Borders */
+  --color-border:       #444;
   --color-border-light: #555;
-  --color-border-dark: #333;
+  --color-border-dark:  #333;
 
-  /* Utility colors */
-  --color-error: #f7768e;
+  /* Semantic */
+  --color-error:   #f7768e;
   --color-warning: #e0af68;
-  --color-info: #7aa2f7;
+  --color-info:    #7aa2f7;
   --color-success: #89b29e;
 
   /* Fonts */
-  --font-serif: "Inter", sans-serif;
-  --font-sans: "Inter", sans-serif;
-  --font-mono: "Fira Code", monospace;
+  --font-serif: "Fraunces", serif;
+  --font-sans:  "Fira Code", monospace;
+  --font-mono:  "Fira Code", monospace;
 }
 
 @layer base {
   html {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-size: 16px;
+    /* Base: 15px — readable without being too large */
+    font-size: 15px;
     scroll-behavior: smooth;
   }
 
-  h1,
-  h2,
-  h3 {
+  body {
+    font-family: var(--font-mono);
+    -webkit-font-smoothing: antialiased;
+    /* Comfortable line-height for mono body text */
+    line-height: 1.7;
+  }
+
+  h1 {
+    font-family: var(--font-serif);
     color: var(--color-foreground-bright);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.07;
   }
 
   h2 {
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
+    color: var(--color-foreground-bright);
+    font-size: 1.35rem;
     font-weight: 600;
+    margin-bottom: 1.25rem;
   }
 
   h3 {
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    font-weight: normal;
+    color: var(--color-foreground-bright);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--color-foreground-secondary);
+    line-height: 1.85;
   }
 
   a {
-    @apply text-primary hover:text-primary-light font-bold underline transition duration-300 ease-in-out;
+    @apply text-primary hover:text-primary-light transition-colors duration-200 ease-in-out;
+    text-decoration: none;
   }
 
   i {
     @apply text-primary italic;
+  }
+
+  /* Inline code — readable at body scale */
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.85em; /* relative to parent, stays proportional */
+    color: var(--color-primary-light);
+    background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+  }
+
+  /* Code inside terminal blocks — inherit size, no extra bg */
+  .term-block code {
+    font-size: inherit;
+    background: transparent;
+    padding: 0;
+    color: inherit;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--color-border-dark);
   }
 }
 
@@ -81,9 +122,49 @@ footer {
 }
 
 section {
-  @apply mb-12;
+  @apply mb-16;
 }
 
 i.nf {
   @apply text-foreground-bright;
+}
+
+/* ── Uppercase category labels — the ONE place tiny text is intentional ── */
+.label-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+}
+
+/* ── Cursor blink ── */
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 0.85em;
+  background: var(--color-primary);
+  vertical-align: text-bottom;
+  animation: cursor-blink 1.1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  50% { opacity: 0; }
+}
+
+/* ── Staggered page-load reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: reveal-up 0.5s ease forwards;
+}
+.reveal-1 { animation-delay: 0.04s; }
+.reveal-2 { animation-delay: 0.13s; }
+.reveal-3 { animation-delay: 0.22s; }
+.reveal-4 { animation-delay: 0.31s; }
+.reveal-5 { animation-delay: 0.40s; }
+.reveal-6 { animation-delay: 0.50s; }
+
+@keyframes reveal-up {
+  to { opacity: 1; transform: none; }
 }

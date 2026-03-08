@@ -3,20 +3,68 @@ import { currentYear } from "@/utils/helpers";
 ---
 
 <footer
-  class="border-border-dark mt-4 w-full border-t pt-2"
-  aria-labelledby="footer-heading"
+  class="border-border-dark mt-8 w-full border-t"
+  aria-label="Site footer"
 >
-  <h2 class="sr-only" id="footer-heading">Credits</h2>
-  <p
-    class="text-foreground-muted mb-1 text-center text-[0.95rem] leading-[1.6] italic"
+  <div
+    class="mx-auto flex max-w-200 flex-col items-center justify-between gap-x-6 gap-y-3 px-4 py-5 sm:flex-row sm:px-8"
   >
-    © {currentYear}
-    <a
-      href="https://lucapattocchio.dev"
-      target="_blank"
-      title="Luca Pattocchio's personal website"
-      rel="noopener">Luca Pattocchio</a
+    <!-- Left: copyright + JAAD credit -->
+    <p
+      class="text-foreground-secondary text-center font-mono text-[0.78rem] sm:text-left"
     >
-    (<span class="highlight">Kasui</span>).
-  </p>
+      © {currentYear}
+      <a
+        href="https://lucapattocchio.dev"
+        target="_blank"
+        rel="noopener"
+        class="text-foreground-muted hover:text-primary-light transition-colors"
+      >
+        Luca Pattocchio
+      </a>
+      · realizzato con
+      <a
+        href="#"
+        target="_blank"
+        rel="noopener"
+        title="JAAD — Astro template"
+        class="text-primary-dark hover:text-primary-light transition-colors"
+      >
+        JAAD
+      </a>
+    </p>
+
+    <!-- Right: nav links -->
+    <nav class="flex items-center gap-5" aria-label="Footer navigation">
+      <a
+        href="/docs"
+        class="text-foreground-secondary hover:text-primary-light font-mono text-[0.78rem] transition-colors"
+        >docs</a
+      >
+      <a
+        href="/hub"
+        class="text-foreground-secondary hover:text-primary-light font-mono text-[0.78rem] transition-colors"
+        >hub</a
+      >
+      <a
+        href="https://github.com/lancher-dev/lancher"
+        target="_blank"
+        rel="noopener"
+        class="text-foreground-secondary hover:text-primary-light flex items-center gap-1.5 font-mono text-[0.78rem] transition-colors"
+      >
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+          ></path>
+        </svg>
+        github
+      </a>
+    </nav>
+  </div>
 </footer>

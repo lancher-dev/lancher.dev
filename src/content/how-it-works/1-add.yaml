@@ -1,0 +1,14 @@
+order: 1
+label: "template add"
+title: "Add any template"
+desc: >
+  Point to a git URL or a local path. HTTPS, SSH, or a ~/local/dir — all
+  treated the same. The template is registered locally; nothing is cloned
+  until you run create.
+lines:
+  - - { type: prompt,  text: "❯ " }
+    - { type: command, text: "lancher template add" }
+    - { type: arg,     text: " go-api" }
+    - { type: command, text: " gh:you/go-api" }
+  - - { type: success, text: "  ✔ " }
+    - { type: output,  text: "template added" }

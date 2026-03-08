@@ -1,7 +1,6 @@
 ---
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
-
 import "@/styles/global.css";
 ---
 
@@ -12,13 +11,21 @@ import "@/styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <meta
       name="description"
-      content="lancher - A minimal, local project-template manager written in Go. "
+      content="lancher - A minimal, local project-template manager written in Go."
     />
     <title>lancher</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <!-- Open Graph Meta Tags -->
+    <!-- Google Fonts: Fraunces (display) + Fira Code (mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph -->
     <meta property="og:url" content="https://lancher.dev" />
     <meta property="og:type" content="website" />
     <meta
@@ -31,7 +38,7 @@ import "@/styles/global.css";
     />
     <meta property="og:image" content="https://lancher.dev/og-image.png" />
 
-    <!-- Twitter Meta Tags -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:domain" content="lancher.dev" />
     <meta property="twitter:url" content="https://lancher.dev" />
@@ -52,7 +59,7 @@ import "@/styles/global.css";
     <main
       role="main"
       aria-label="Main content"
-      class="mx-0 my-8 flex-1 px-8 py-0 lg:px-16"
+      class="mx-0 my-8 flex-1 px-4 py-0 sm:px-8 lg:px-16"
     >
       <slot />
     </main>

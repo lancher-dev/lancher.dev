@@ -1,0 +1,15 @@
+order: 2
+label: "template list"
+title: "See what you have"
+desc: >
+  All registered templates at a glance — name and source side by side.
+  Local paths and remote repos are listed together without distinction.
+lines:
+  - - { type: prompt,  text: "❯ " }
+    - { type: command, text: "lancher template list" }
+  - - { type: output,  text: "  go-api    " }
+    - { type: arg,     text: "gh:you/go-api" }
+  - - { type: output,  text: "  next-app  " }
+    - { type: arg,     text: "~/templates/next" }
+  - - { type: output,  text: "  rust-bin  " }
+    - { type: arg,     text: "gh:you/rust-bin" }

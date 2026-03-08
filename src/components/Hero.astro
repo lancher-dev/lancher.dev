@@ -1,15 +1,93 @@
 ---
 import { Image } from "astro:assets";
-import Logo from "../assets/logo.svg";
+import CopyButton from "@/components/CopyButton.astro";
+import TerminalChrome from "@/components/TerminalChrome.astro";
+import DemoGif from "../assets/demo.gif";
+
+// CURL_CMD is a UI constant, not content — lives here and in InstallSection
+const CURL_CMD = "curl -fsSL https://lancher.dev/install.sh | sh";
 ---
 
 <header
-  class="mb-6 px-0 py-4 text-center lg:mb-3"
-  aria-labelledby="header-heading"
+  class="pt-14 pb-10 text-center sm:pt-20 sm:pb-12"
+  aria-labelledby="hero-heading"
 >
-  <h2 class="sr-only" id="header-heading">lancher - introduction</h2>
-  <Image src={Logo} alt="lancher logo" class="text-primary mx-auto h-48 w-72" />
-  <p class="text-foreground-bright text-[1.2rem]">
-    A minimal, local project-template manager written in Go.
-  </p>
+  <h1 class="sr-only" id="hero-heading">
+    lancher — local project template manager
+  </h1>
+
+  <!-- Eyebrow -->
+  <div class="reveal reveal-1 mb-4 inline-flex items-center gap-2">
+    <span class="bg-primary-dark block h-px w-4 shrink-0"></span>
+    <span class="label-tag">project template manager</span>
+    <span class="bg-primary-dark block h-px w-4 shrink-0"></span>
+  </div>
+
+  <!-- Headline -->
+  <h2
+    aria-hidden="true"
+    class="reveal reveal-2 text-foreground-bright mb-6 font-serif text-[clamp(2.2rem,4.8vw,3.6rem)] leading-[1.08] font-light tracking-[-0.02em]"
+  >
+    Your templates.<br />
+    <em class="text-primary italic not-italic">Your machine.</em><br />
+    One command.
+  </h2>
+
+  <!-- Description + CTAs in shared max-w container -->
+  <div
+    class="reveal reveal-3 mx-auto flex max-w-sm flex-col items-stretch gap-5"
+  >
+    <p
+      class="text-foreground-secondary text-center text-[0.9rem] leading-[1.85]"
+    >
+      A minimal CLI in Go. Register templates from local paths or git repos and
+      scaffold new projects in seconds. No cloud. No account.
+    </p>
+
+    <!-- curl row -->
+    <div
+      class="bg-surface border-border flex h-11 items-center gap-2 rounded-sm border px-4"
+      role="group"
+      aria-label="Install command"
+    >
+      <span
+        class="text-primary-dark shrink-0 font-mono text-[0.82rem] leading-none select-none"
+        >$</span
+      >
+      <span
+        class="text-foreground-muted flex-1 truncate text-left font-mono text-[0.82rem] leading-none"
+      >
+        {CURL_CMD}
+      </span>
+      <CopyButton id="hero-copy" cmd={CURL_CMD} compact />
+    </div>
+
+    <!-- Secondary links — edges align with the curl row above -->
+    <div class="flex items-center justify-between px-0.5">
+      <a
+        href="/docs"
+        class="text-foreground-secondary hover:text-primary-light font-mono text-[0.8rem] transition-colors"
+        >read the docs →</a
+      >
+      <a
+        href="/#install"
+        class="text-foreground-secondary hover:text-primary-light font-mono text-[0.8rem] transition-colors"
+        >other platforms →</a
+      >
+    </div>
+  </div>
+
+  <!-- Demo gif -->
+  <div class="reveal reveal-4 mx-auto mt-10 max-w-2xl">
+    <TerminalChrome title="lancher demo" standalone />
+    <div
+      class="border-border-dark bg-surface overflow-hidden rounded-b-sm border border-t-0"
+    >
+      <Image
+        src={DemoGif}
+        alt="A demo of lancher: adding a template and scaffolding a new project."
+        class="block h-auto w-full"
+      />
+    </div>
+  </div>
 </header>

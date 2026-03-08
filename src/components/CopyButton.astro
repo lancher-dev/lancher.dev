@@ -1,0 +1,41 @@
+---
+/**
+ * CopyButton
+ * A small button that copies `cmd` to clipboard and triggers #toast.
+ *
+ * Props:
+ *   cmd     — the string to copy
+ *   id      — id attribute on the button (used to attach the listener)
+ *   label   — visible label (default: "copy")
+ *   compact — if true, hides the label on small screens
+ */
+interface Props {
+  cmd: string;
+  id: string;
+  label?: string;
+  compact?: boolean;
+}
+
+const { cmd, id, label = "copy", compact = true } = Astro.props;
+---
+
+<button
+  {id}
+  data-cmd={cmd}
+  class="copy-btn border-border-light text-foreground-muted bg-background-secondary hover:border-border hover:text-foreground-bright inline-flex h-7 shrink-0 cursor-pointer items-center gap-1.5 rounded-sm border px-3 font-mono text-[0.78rem] leading-none transition-colors"
+  aria-label={`Copy: ${cmd}`}
+>
+  <i class="nf nf-md-content_copy leading-none not-italic"></i>
+  <span class:list={compact ? ["hidden", "sm:inline"] : []}>{label}</span>
+</button>
+
+<script>
+  import { onCopy } from "@/utils/toast";
+
+  document.querySelectorAll<HTMLElement>(".copy-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const cmd = btn.dataset.cmd;
+      if (cmd) navigator.clipboard.writeText(cmd).then(onCopy);
+    });
+  });
+</script>

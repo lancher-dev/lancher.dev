@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+import CopyButton from "@/components/CopyButton.astro";
+
+const CURL_CMD = "curl -fsSL https://lancher.dev/install.sh | sh";
+
+const platforms = (await getCollection("platforms")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<section id="install" aria-labelledby="install-heading" class="max-w-2xl">
+  <h2
+    id="install-heading"
+    class="text-foreground-bright mb-2 font-serif text-[1.6rem] font-light"
+  >
+    Get started.
+  </h2>
+  <p class="text-foreground-secondary mb-6 text-[0.9rem] leading-[1.85]">
+    The install script detects your platform and puts the binary in your <code
+      >PATH</code
+    >. All packages are signed and verified.
+  </p>
+
+  <!-- curl block -->
+  <div
+    class="border-border bg-surface mb-6 flex h-11 items-center gap-3 rounded-sm border px-4"
+    role="group"
+    aria-label="Install command"
+  >
+    <span
+      class="text-primary-dark shrink-0 font-mono text-[0.82rem] leading-none select-none"
+      >$</span
+    >
+    <code
+      class="text-primary-light flex-1 overflow-x-auto bg-transparent p-0 font-mono text-[0.82rem] leading-none whitespace-nowrap"
+      style="scrollbar-width: none;"
+    >
+      {CURL_CMD}
+    </code>
+    <CopyButton id="install-copy" cmd={CURL_CMD} />
+  </div>
+
+  <!-- Platform chips from collection -->
+  <div class="flex flex-col gap-3">
+    <p class="label-tag">other install methods</p>
+
+    <div class="flex flex-wrap gap-2">
+      {
+        platforms.map(({ data: p }) => (
+          <a
+            href={p.href}
+            target={p.external ? "_blank" : undefined}
+            rel={p.external ? "noopener noreferrer" : undefined}
+            title={p.note}
+            class="border-border-dark text-foreground-muted hover:border-primary-dark hover:text-primary-light inline-flex h-8 items-center gap-1.5 rounded-sm border px-3 font-mono text-[0.78rem] no-underline transition-colors"
+          >
+            <span class="text-foreground-bright">{p.label}</span>
+            <span class="text-border-light">·</span>
+            <span>{p.sub}</span>
+          </a>
+        ))
+      }
+    </div>
+
+    <p class="text-foreground-secondary font-mono text-[0.78rem]">
+      Looking for pre-compiled binaries?{" "}
+      <a
+        href="https://github.com/lancher-dev/lancher/releases/latest"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-primary-dark hover:text-primary-light underline underline-offset-2 transition-colors"
+      >
+        See releases on GitHub →
+      </a>
+    </p>
+  </div>
+</section>

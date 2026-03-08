@@ -1,0 +1,5 @@
+order: 3
+label: "apt"
+sub: "Debian / Ubuntu"
+href: "https://lancher.dev/docs/install#debian"
+note: "requires adding the repository"

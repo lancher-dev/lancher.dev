@@ -1,0 +1,19 @@
+order: 3
+label: "create"
+title: "Scaffold in seconds"
+desc: >
+  Interactive prompt: pick a template, give the project a name — done.
+  No config file to set up first. Post-create hooks run automatically if defined.
+lines:
+  - - { type: prompt,  text: "❯ " }
+    - { type: command, text: "lancher create" }
+  - - { type: warning, text: "  ? Select template › " }
+    - { type: arg,     text: "go-api" }
+  - - { type: warning, text: "  ? Project name     › " }
+    - { type: arg,     text: "my-service" }
+  - - { type: success, text: "  ✔ " }
+    - { type: output,  text: "created " }
+    - { type: command, text: "./my-service" }
+  - - { type: output,  text: "    running post-create hooks…" }
+  - - { type: success, text: "  ✔ " }
+    - { type: output,  text: "done." }
