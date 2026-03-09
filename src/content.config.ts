@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { glob } from "astro/loaders";
+import { glob, file } from "astro/loaders";
 
 const docsPages = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./docs" }),
@@ -35,8 +35,6 @@ const howItWorks = defineCollection({
   }),
 });
 
-// ── platforms ─────────────────────────────────────────────────────────────────
-
 const platforms = defineCollection({
   type: "data",
   schema: z.object({
@@ -49,8 +47,27 @@ const platforms = defineCollection({
   }),
 });
 
+const navigation = defineCollection({
+  loader: file("src/content/navigation.json", {
+    parser: (data) => {
+      const arrayData = JSON.parse(data) as any[];
+      return arrayData?.map((item, index) => {
+        return {
+          id: index,
+          ...item,
+        };
+      });
+    },
+  }),
+  schema: z.object({
+    label: z.string(),
+    href: z.string(),
+  }),
+});
+
 export const collections = {
   docsPages,
   "how-it-works": howItWorks,
   platforms,
+  navigation,
 };

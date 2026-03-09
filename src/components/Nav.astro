@@ -1,27 +1,21 @@
 ---
+import type { CollectionEntry } from "astro:content";
+import { fmt } from "@/utils/helpers";
+
 interface Props {
   stars?: number | null;
+  navigation: CollectionEntry<"navigation">["data"][];
 }
 
-const { stars } = Astro.props;
+const { stars, navigation } = Astro.props;
 
-const links = [
-  { label: "how it works", href: "/#how" },
-  { label: "install", href: "/#install" },
-  { label: "docs", href: "/docs" },
-  { label: "hub", href: "/hub" },
-];
-
+// Get the current path to determine active link
 const currentPath = Astro.url.pathname;
-
-function fmt(n: number) {
-  return n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);
-}
 ---
 
 <nav class="hidden items-center gap-6 md:flex" aria-label="Primary navigation">
   {
-    links.map(({ label, href }) => (
+    navigation.map(({ label, href }) => (
       <a
         href={href}
         class:list={[
@@ -36,10 +30,6 @@ function fmt(n: number) {
     ))
   }
 
-  <!--
-    GitHub badge — two adjacent pill halves with shared h-7 so they
-    always align regardless of star count or font rendering.
-  -->
   <a
     href="https://github.com/lancher-dev/lancher"
     target="_blank"

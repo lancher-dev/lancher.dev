@@ -6,3 +6,7 @@ export function ucfirst(str: string): string {
 export function currentYear(): number {
   return new Date().getFullYear();
 }
+
+export function fmt(n: number) {
+  return n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);
+}

@@ -1,21 +1,13 @@
+import type { CollectionEntry } from "astro:content";
 import { useState } from "react";
+import { fmt } from "@/utils/helpers";
 
 interface Props {
   stars?: number | null;
+  navigation: CollectionEntry<"navigation">["data"][];
 }
 
-const links = [
-  { label: "how it works", href: "/#how" },
-  { label: "install", href: "/#install" },
-  { label: "docs", href: "/docs" },
-  { label: "hub", href: "/hub" },
-];
-
-function fmt(n: number) {
-  return n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);
-}
-
-export default function NavMobile({ stars }: Props) {
+export default function NavMobile({ stars, navigation }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -47,7 +39,7 @@ export default function NavMobile({ stars }: Props) {
           aria-label="Mobile navigation"
         >
           <ul className="flex flex-col gap-3">
-            {links.map(({ label, href }) => (
+            {navigation.map(({ label, href }) => (
               <li key={href}>
                 <a
                   href={href}

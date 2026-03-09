@@ -3,24 +3,16 @@ import { Image } from "astro:assets";
 import Logo from "../assets/logo.svg";
 import Nav from "./Nav.astro";
 import NavMobile from "./NavMobile";
+import { fetchGitHubStars } from "@/utils/github-stars";
+import { getCollection } from "astro:content";
 
-// Fetch GitHub stars at build time — falls back to null on error
-let stars: number | null = null;
-try {
-  const res = await fetch("https://api.github.com/repos/lancher-dev/lancher", {
-    headers: { Accept: "application/vnd.github+json" },
-  });
-  if (res.ok) {
-    const data = await res.json();
-    stars = data.stargazers_count ?? null;
-  }
-} catch {
-  // silently ignore — stars won't be shown
-}
+// Load navigation links
+const navigation = (await getCollection("navigation")).map(
+  (entry) => entry.data,
+);
 
-function formatStars(n: number): string {
-  return n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);
-}
+// Get GitHub stars
+const stars = await fetchGitHubStars();
 ---
 
 <header
@@ -28,7 +20,7 @@ function formatStars(n: number): string {
   aria-label="Site header"
 >
   <div class="mx-auto max-w-200 px-4 sm:px-8">
-    <div class="grid h-[52px] grid-cols-[1fr_auto] items-center gap-4">
+    <div class="grid h-13 grid-cols-[1fr_auto] items-center gap-4">
       <!-- Logo -->
       <a
         href="/"
@@ -40,10 +32,10 @@ function formatStars(n: number): string {
       </a>
 
       <!-- Desktop nav -->
-      <Nav stars={stars} />
+      <Nav stars={stars} navigation={navigation} />
 
       <!-- Mobile nav -->
-      <NavMobile client:load stars={stars} />
+      <NavMobile client:load stars={stars} navigation={navigation} />
     </div>
   </div>
 </header>
