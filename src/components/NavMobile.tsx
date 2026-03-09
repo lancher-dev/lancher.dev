@@ -14,18 +14,18 @@ export default function NavMobile({ stars, navigation }: Props) {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="text-foreground-muted hover:text-foreground-bright flex flex-col gap-[5px] p-1 transition-colors md:hidden"
+        className="text-foreground-muted hover:text-foreground-bright flex flex-col gap-1.25 p-1 transition-colors md:hidden"
         aria-label="Toggle mobile menu"
         aria-expanded={isOpen}
       >
         <span
-          className={`block h-px w-5 bg-current transition-all duration-200 ${isOpen ? "translate-y-[6px] rotate-45" : ""}`}
+          className={`block h-px w-5 bg-current transition-all duration-200 ${isOpen ? "translate-y-1.5 rotate-45" : ""}`}
         />
         <span
           className={`block h-px w-5 bg-current transition-all duration-200 ${isOpen ? "opacity-0" : ""}`}
         />
         <span
-          className={`block h-px bg-current transition-all duration-200 ${isOpen ? "w-5 -translate-y-[6px] -rotate-45" : "w-3"}`}
+          className={`block h-px bg-current transition-all duration-200 ${isOpen ? "w-5 -translate-y-1.5 -rotate-45" : "w-3"}`}
         />
       </button>
 
