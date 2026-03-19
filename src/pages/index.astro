@@ -1,22 +1,16 @@
 ---
-import Hero from "@/components/Hero.astro";
-import HowItWorks from "@/components/sections/HowItWorksSection.astro";
-import InstallSection from "@/components/sections/InstallSection.astro";
+import Toast from "@/components/Toast.astro";
 import Layout from "@/layouts/Layout.astro";
+
+import Hero from "@/components/landing/Hero.astro";
+import HowItWorksSection from "@/components/landing/HowItWorksSection.astro";
+import InstallSection from "@/components/landing/InstallSection.astro";
 ---
 
 <Layout>
   <Hero />
-  <HowItWorks />
+  <HowItWorksSection />
   <InstallSection />
 </Layout>
 
-<!-- Toast — single instance, shared by all copy buttons on the page -->
-<div
-  id="toast"
-  class="bg-background-tertiary border-primary-dark text-primary-light pointer-events-none fixed bottom-6 left-1/2 z-50 -translate-x-1/2 translate-y-2 rounded-sm border px-3 py-1.5 font-mono text-[0.78rem] whitespace-nowrap opacity-0 transition-all duration-200"
-  role="status"
-  aria-live="polite"
->
-  copied.
-</div>
+<Toast />
