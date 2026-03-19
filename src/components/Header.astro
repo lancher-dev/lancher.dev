@@ -1,10 +1,11 @@
 ---
-import { Image } from "astro:assets";
-import Logo from "../assets/logo.svg";
-import Nav from "./Nav.astro";
-import NavMobile from "./NavMobile";
 import { fetchGitHubStars } from "@/utils/github-stars";
 import { getCollection } from "astro:content";
+
+import { Image } from "astro:assets";
+import Logo from "@/assets/logo.png";
+import Nav from "./Nav.astro";
+import NavMobile from "./NavMobile";
 
 // Load navigation links
 const navigation = (await getCollection("navigation")).map(
@@ -19,23 +20,30 @@ const stars = await fetchGitHubStars();
   class="bg-background/95 border-border-dark sticky top-0 z-50 w-full border-b backdrop-blur-md"
   aria-label="Site header"
 >
-  <div class="mx-auto max-w-200 px-4 sm:px-8">
-    <div class="grid h-13 grid-cols-[1fr_auto] items-center gap-4">
-      <!-- Logo -->
-      <a
-        href="/"
-        title="Home"
-        class="group flex w-fit items-center gap-2.5 no-underline"
-      >
-        <Image src={Logo} alt="lancher" class="h-6 w-auto" />
-        <span class="sr-only">lancher — home</span>
+  <div
+    class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3"
+  >
+    <div class="flex h-16 items-center justify-between">
+      <!-- Logo + site title -->
+      <a href="/" class="group flex items-center gap-2 no-underline">
+        <Image
+          src={Logo}
+          alt="Lancher logo"
+          width={32}
+          height={32}
+          class="transition-transform group-hover:rotate-12"
+        />
+        <span
+          class="text-foreground-bright font-mono text-[0.9rem] tracking-[.03em]"
+          >lancher</span
+        >
       </a>
-
-      <!-- Desktop nav -->
-      <Nav stars={stars} navigation={navigation} />
-
-      <!-- Mobile nav -->
-      <NavMobile client:load stars={stars} navigation={navigation} />
     </div>
+
+    <!-- Desktop nav -->
+    <Nav stars={stars} navigation={navigation} />
+
+    <!-- Mobile nav -->
+    <NavMobile client:load stars={stars} navigation={navigation} />
   </div>
 </header>

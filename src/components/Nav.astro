@@ -13,7 +13,10 @@ const { stars, navigation } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="hidden items-center gap-6 md:flex" aria-label="Primary navigation">
+<nav
+  class="hidden items-center justify-end gap-6 md:flex"
+  aria-label="Primary navigation"
+>
   {
     navigation.map(({ label, href }) => (
       <a
