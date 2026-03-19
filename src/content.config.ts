@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob, file } from "astro/loaders";
 
 const docsPages = defineCollection({
@@ -25,7 +26,10 @@ const tokenSchema = z.object({
 });
 
 const howItWorks = defineCollection({
-  type: "data",
+  loader: glob({
+    base: "./src/content/how-it-works",
+    pattern: "**/*.{yaml,yml}",
+  }),
   schema: z.object({
     order: z.number().int().min(1),
     label: z.string(),
@@ -36,7 +40,10 @@ const howItWorks = defineCollection({
 });
 
 const platforms = defineCollection({
-  type: "data",
+  loader: glob({
+    base: "./src/content/platforms",
+    pattern: "**/*.{yaml,yml}",
+  }),
   schema: z.object({
     order: z.number().int().min(1),
     label: z.string(),
