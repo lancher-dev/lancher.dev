@@ -42,22 +42,20 @@ export default defineConfig({
     }),
   ],
 
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Inter",
-        cssVariable: "--font-inter",
-        weights: [400, 500, 600],
-        styles: ["normal"],
-      },
-      {
-        provider: fontProviders.google(),
-        name: "Merriweather",
-        cssVariable: "--font-merriweather",
-        weights: [300, 400, 700],
-        styles: ["normal", "italic"],
-      },
-    ],
-  },
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      weights: [400, 500, 600],
+      styles: ["normal"],
+    },
+    {
+      provider: fontProviders.google(),
+      name: "Merriweather",
+      cssVariable: "--font-merriweather",
+      weights: [300, 400, 700],
+      styles: ["normal", "italic"],
+    },
+  ],
 });
