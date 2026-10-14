@@ -1,13 +1,11 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import Layout from "@lancher-dev/jaad/layouts/Page.astro";
 ---
 
-<Layout>
-  <div
-    class="m-auto flex h-full w-full flex-col items-center justify-center px-16 text-center"
-  >
-    <h1 class="mb-16 text-6xl font-bold">404</h1>
-    <p class="mb-32 text-xl">
+<Layout title="404" description="The page you're looking for doesn't exist.">
+  <div class="jaad-not-found">
+    <h1 class="jaad-not-found-title">404</h1>
+    <p class="jaad-not-found-text">
       <i>Oops!</i> The page you're looking for doesn't exist.
     </p>
     <a href="/">Go back to the homepage</a>
